@@ -1,0 +1,213 @@
+<template>
+  <style>
+    /* Palette and type are placeholders: swap freely. System fonts only. */
+    #root {
+      position: absolute;
+      inset: 0;
+      --ground: #1e2733; /* dark slate */
+      --ground-deep: #141b24;
+      --track: #3a4656; /* grey ring track */
+      --accent: #2dd4bf; /* teal fill */
+      --ink: #f1f5f9;
+      --ink-soft: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 120px;
+      padding-bottom: 80px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(120% 70% at 50% 42%, var(--ground) 0%, var(--ground-deep) 100%);
+    }
+
+    /* Ring: 600 px wide including the stroke. */
+    #donut-ring-wrap {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      flex: none;
+    }
+    #donut-ring {
+      display: block;
+      width: 600px;
+      height: 600px;
+      overflow: visible;
+    }
+    #donut-track {
+      fill: none;
+      stroke: var(--track);
+      stroke-width: 64;
+    }
+    #donut-arc {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 64;
+      stroke-linecap: round;
+    }
+    #donut-number {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 190px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    #donut-pct {
+      font-size: 0.48em;
+      font-weight: 700;
+      margin-left: 0.06em;
+      margin-top: 0.42em;
+      color: var(--accent);
+      letter-spacing: 0;
+    }
+
+    /* Caption */
+    #donut-caption {
+      position: relative;
+      text-align: center;
+      max-width: 860px;
+      flex: none;
+    }
+    #donut-cap-main {
+      color: var(--ink);
+      font-size: 68px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    #donut-cap-sub {
+      margin-top: 22px;
+      color: var(--ink-soft);
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="donut"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='[
+      {"id":"value","type":"number","label":"Percentage","default":73,"min":0,"max":100,"step":1,"unit":"%"},
+      {"id":"caption-main","type":"string","label":"Caption","default":"of buyers read reviews"},
+      {"id":"caption-sub","type":"string","label":"Caption, second line","default":"before they pay"}
+    ]'
+  >
+    <div id="donut-ring-wrap" class="clip" data-start="0" data-duration="5">
+      <svg id="donut-ring" viewBox="0 0 600 600" aria-hidden="true">
+        <defs>
+          <radialGradient id="donut-glow-fill">
+            <stop offset="0%" stop-color="#ccfbf1" stop-opacity="1" />
+            <stop offset="30%" stop-color="#2dd4bf" stop-opacity="0.75" />
+            <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <circle id="donut-track" cx="300" cy="300" r="268" />
+        <!-- Starts at 12 o'clock and runs clockwise (rotated -90deg around the centre). -->
+        <circle
+          id="donut-arc"
+          cx="300"
+          cy="300"
+          r="268"
+          pathLength="100"
+          stroke-dasharray="0 100"
+          transform="rotate(-90 300 300)"
+        />
+        <circle id="donut-glow" cx="300" cy="32" r="70" fill="url(#donut-glow-fill)" opacity="0" />
+      </svg>
+      <div id="donut-number"><span id="donut-num">0</span><span id="donut-pct">%</span></div>
+    </div>
+
+    <div id="donut-caption" class="clip" data-start="0" data-duration="5">
+      <p id="donut-cap-main" data-var-text="caption-main">of buyers read reviews</p>
+      <p id="donut-cap-sub" data-var-text="caption-sub">before they pay</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // The percentage is a variable (default 73): arc, counter and glow all follow it.
+      let value = 73;
+      try {
+        const vars = window.__hyperframes && window.__hyperframes.getVariables
+          ? window.__hyperframes.getVariables()
+          : null;
+        if (vars && vars.value !== undefined && !isNaN(Number(vars.value))) value = Number(vars.value);
+      } catch (e) {}
+      const target = Math.max(0, Math.min(100, value));
+
+      const R = 268;
+      const C = 300;
+      const endAngle = (target / 100) * Math.PI * 2; // clockwise from 12 o'clock
+      const glow = document.getElementById("donut-glow");
+      glow.setAttribute("cx", (C + R * Math.sin(endAngle)).toFixed(2));
+      glow.setAttribute("cy", (C - R * Math.cos(endAngle)).toFixed(2));
+
+      const arc = document.getElementById("donut-arc");
+      const numEl = document.getElementById("donut-num");
+      const state = { p: 0 };
+      const render = () => {
+        arc.setAttribute("stroke-dasharray", state.p + " " + (100 - state.p));
+        // Round caps would draw a dot at 0%: keep the arc hidden until it has length.
+        arc.style.opacity = state.p > 0.05 ? 1 : 0;
+        numEl.textContent = Math.round(state.p);
+      };
+
+      const tl = gsap.timeline({ paused: true });
+
+      // 0.0–0.5: ring and number settle in.
+      tl.fromTo(
+        "#donut-ring",
+        { opacity: 0, scale: 0.92, transformOrigin: "50% 50%" },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
+        0
+      );
+      tl.fromTo("#donut-number", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.1);
+
+      // 0.5–2.5: fill clockwise to the value; the counter rides the same tween.
+      tl.fromTo(
+        state,
+        { p: 0 },
+        { p: target, duration: 2, ease: "power2.inOut", onUpdate: render, onStart: render },
+        0.5
+      );
+
+      // 2.6–3.3: two-line caption fades in below the ring.
+      tl.fromTo(
+        "#donut-cap-main",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" },
+        2.6
+      );
+      tl.fromTo(
+        "#donut-cap-sub",
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        2.8
+      );
+
+      // 3.4–4.3: a small glow pulse on the end of the teal arc.
+      tl.fromTo(
+        "#donut-glow",
+        { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" },
+        { opacity: 0.95, scale: 1.1, duration: 0.35, ease: "power2.out" },
+        3.4
+      );
+      tl.to("#donut-glow", { opacity: 0, scale: 1.5, duration: 0.55, ease: "power2.in" }, 3.75);
+
+      // Hold to the end of the scene.
+      tl.set({}, {}, 5);
+
+      render();
+      window.__timelines = window.__timelines || {};
+      window.__timelines["donut"] = tl;
+    })();
+  </script>
+</template>

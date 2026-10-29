@@ -1,0 +1,401 @@
+<template>
+  <style>
+      #root {
+        --ground: #e9e6df;
+        --bezel: #16171b;
+        --screen: #f7f6f3;
+        --ink: #17181c;
+        --muted: #8a8c93;
+        --line: #e3e1dc;
+        --card: #ffffff;
+        --accent: #1f2a44;
+        --done: #22a55b;
+        --font-ui: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      #root * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #root {
+        position: absolute;
+        inset: 0;
+        font-family: var(--font-ui);
+        background: radial-gradient(circle at 50% 42%, #f4f2ed 0%, var(--ground) 70%);
+      }
+
+      /* Phone: 760 x 1560, centred */
+      #phone {
+        position: absolute;
+        left: 160px;
+        top: 180px;
+        width: 760px;
+        height: 1560px;
+        border-radius: 112px;
+        background: var(--bezel);
+        box-shadow:
+          0 0 0 3px #2c2e34,
+          0 60px 120px rgba(20, 22, 30, 0.28),
+          0 18px 40px rgba(20, 22, 30, 0.18);
+      }
+      #screen {
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        width: 716px;
+        height: 1516px;
+        border-radius: 90px;
+        background: var(--screen);
+        overflow: hidden;
+      }
+      #island {
+        position: absolute;
+        left: 50%;
+        top: 26px;
+        width: 200px;
+        height: 58px;
+        margin-left: -100px;
+        border-radius: 29px;
+        background: var(--bezel);
+      }
+      #status {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        top: 38px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 30px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      #status-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      #app-head {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        top: 170px;
+      }
+      #app-date {
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      #app-title {
+        margin-top: 8px;
+        font-size: 92px;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        color: var(--ink);
+        line-height: 1;
+      }
+      #app-count {
+        position: relative;
+        margin-top: 18px;
+        height: 40px;
+        font-size: 32px;
+        color: var(--muted);
+      }
+      #app-count span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+      }
+
+      /* Task list */
+      #list {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        top: 400px;
+        height: 480px;
+      }
+      .row {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 0 32px;
+        border-radius: 30px;
+        background: var(--card);
+        box-shadow:
+          0 1px 0 var(--line),
+          0 8px 24px rgba(23, 24, 28, 0.06);
+      }
+      #row-old1 {
+        top: 0;
+      }
+      #row-old2 {
+        top: 152px;
+      }
+      #row-new {
+        top: 0;
+        z-index: 2;
+      }
+      #row-new-glow {
+        position: absolute;
+        inset: 0;
+        border-radius: 30px;
+        box-shadow: 0 0 0 4px rgba(34, 165, 91, 0.35);
+      }
+      .box {
+        position: relative;
+        flex: 0 0 56px;
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        border: 4px solid #c9c7c1;
+      }
+      #box-new-fill {
+        position: absolute;
+        inset: -4px;
+        border-radius: 18px;
+        background: var(--done);
+      }
+      #tick {
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        width: 56px;
+        height: 56px;
+      }
+      .task {
+        position: relative;
+        font-size: 38px;
+        font-weight: 500;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+      #strike {
+        position: absolute;
+        left: -4px;
+        right: -4px;
+        top: 50%;
+        height: 4px;
+        margin-top: -1px;
+        border-radius: 2px;
+        background: var(--muted);
+      }
+
+      /* Add task button */
+      #add-btn {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        bottom: 60px;
+        height: 120px;
+        border-radius: 60px;
+        background: var(--accent);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        font-size: 38px;
+        font-weight: 600;
+        overflow: hidden;
+      }
+      #add-plus {
+        width: 40px;
+        height: 40px;
+      }
+      #add-label {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Touch marker + ripples, in canvas coordinates */
+      .ripple {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 220px;
+        height: 220px;
+        margin: -110px 0 0 -110px;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.25);
+        pointer-events: none;
+      }
+      #ripple-check {
+        border-color: rgba(34, 165, 91, 0.8);
+        background: rgba(34, 165, 91, 0.16);
+      }
+      #touch {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 104px;
+        height: 104px;
+        margin: -52px 0 0 -52px;
+        border-radius: 50%;
+        background: rgba(40, 44, 56, 0.28);
+        border: 4px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 30px rgba(20, 22, 30, 0.25);
+        z-index: 10;
+      }
+      </style>
+  <div
+    id="root"
+    data-composition-id="todo"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='[{"id":"title","type":"string","label":"Screen title","default":"Today"},{"id":"newTask","type":"string","label":"New task","default":"Send the quote to Aina"}]'
+  >
+        <div id="phone">
+          <div id="screen">
+            <div id="island"></div>
+            <div id="status">
+              <span>9:41</span>
+              <span id="status-icons">
+                <svg width="34" height="22" viewBox="0 0 34 22" aria-hidden="true">
+                  <rect x="0" y="14" width="6" height="8" rx="1.5" fill="#17181c" />
+                  <rect x="9" y="10" width="6" height="12" rx="1.5" fill="#17181c" />
+                  <rect x="18" y="5" width="6" height="17" rx="1.5" fill="#17181c" />
+                  <rect x="27" y="0" width="6" height="22" rx="1.5" fill="#17181c" />
+                </svg>
+                <svg width="52" height="24" viewBox="0 0 52 24" aria-hidden="true">
+                  <rect x="1.5" y="1.5" width="44" height="21" rx="6" fill="none" stroke="#17181c" stroke-width="2.5" opacity="0.5" />
+                  <rect x="5" y="5" width="32" height="14" rx="3" fill="#17181c" />
+                  <rect x="48" y="8" width="3" height="8" rx="1.5" fill="#17181c" opacity="0.5" />
+                </svg>
+              </span>
+            </div>
+
+            <div id="app-head">
+              <div id="app-date">Thursday 29 Oct</div>
+              <div id="app-title" data-var-text="title">Today</div>
+              <div id="app-count">
+                <span id="count-2">2 tasks</span>
+                <span id="count-3">3 tasks</span>
+              </div>
+            </div>
+
+            <div id="list" data-layout-allow-overlap>
+              <div id="row-old1" class="row">
+                <div class="box"></div>
+                <div class="task">Call the supplier</div>
+              </div>
+              <div id="row-old2" class="row">
+                <div class="box"></div>
+                <div class="task">Review site photos</div>
+              </div>
+              <div id="row-new" class="row">
+                <div id="row-new-glow"></div>
+                <div id="box-new" class="box">
+                  <div id="box-new-fill"></div>
+                  <svg id="tick" viewBox="0 0 56 56" aria-hidden="true">
+                    <path
+                      id="tick-path"
+                      d="M15 29 L24 38 L42 19"
+                      fill="none"
+                      stroke="#ffffff"
+                      stroke-width="6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-dasharray="40"
+                      stroke-dashoffset="40"
+                    />
+                  </svg>
+                </div>
+                <div id="task-new" class="task">
+                  <span id="task-new-text" data-var-text="newTask">Send the quote to Aina</span>
+                  <span id="strike"></span>
+                </div>
+              </div>
+            </div>
+
+            <div id="add-btn">
+              <svg id="add-plus" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 8 V32 M8 20 H32" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+              </svg>
+              <span id="add-label">Add task</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="ripple-add" class="ripple"></div>
+        <div id="ripple-check" class="ripple"></div>
+        <div id="touch"></div>
+  </div>
+  <script>
+      // Canvas positions of the two tap targets.
+      // Screen origin = phone (160,180) + bezel 22 = (182,202); screen is 716 x 1516.
+      const ADD = { x: 540, y: 202 + 1516 - 60 - 60 }; // centre of "Add task" button -> y 1598
+      const CHECK = { x: 182 + 48 + 32 + 28, y: 202 + 400 + 65 }; // new row checkbox -> (290, 667)
+      const START = { x: 830, y: 1240 };
+      const STEP = 152; // row height 130 + gap 22
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Initial states, applied before the timeline is built
+      gsap.set("#touch", { x: START.x, y: START.y, opacity: 0, scale: 1 });
+      gsap.set("#ripple-add", { x: ADD.x, y: ADD.y, scale: 0, opacity: 0 });
+      gsap.set("#ripple-check", { x: CHECK.x, y: CHECK.y, scale: 0, opacity: 0 });
+      gsap.set("#row-new", { opacity: 0, y: -50, scale: 0.96 });
+      gsap.set("#row-new-glow", { opacity: 0 });
+      gsap.set(["#row-old1", "#row-old2"], { y: 0 });
+      gsap.set("#count-3", { opacity: 0, y: 16 });
+      gsap.set("#count-2", { opacity: 1, y: 0 });
+      gsap.set("#box-new-fill", { opacity: 0, scale: 0.4 });
+      gsap.set("#tick-path", { strokeDashoffset: 40 });
+      gsap.set("#strike", { scaleX: 0, transformOrigin: "0% 50%" });
+      gsap.set("#task-new", { color: "#17181c" });
+      gsap.set("#add-btn", { scale: 1 });
+
+      // Phone settles in
+      tl.fromTo("#phone", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0);
+
+      // 0.7s: marker appears, 1.0s glides to "Add task"
+      tl.to("#touch", { opacity: 1, duration: 0.25, ease: "power1.out" }, 0.7);
+      tl.to("#touch", { x: ADD.x, y: ADD.y, duration: 0.6, ease: "power2.inOut" }, 1.0);
+
+      // 1.6s: tap
+      tl.to("#touch", { scale: 0.82, duration: 0.1, ease: "power2.in" }, 1.6);
+      tl.to("#add-btn", { scale: 0.96, duration: 0.1, ease: "power2.in" }, 1.6);
+      tl.to("#touch", { scale: 1, duration: 0.2, ease: "power2.out" }, 1.7);
+      tl.to("#add-btn", { scale: 1, duration: 0.25, ease: "back.out(2)" }, 1.7);
+      tl.to("#ripple-add", { opacity: 1, duration: 0.05 }, 1.65);
+      tl.to("#ripple-add", { scale: 1, duration: 0.45, ease: "power2.out" }, 1.65);
+      tl.to("#ripple-add", { opacity: 0, duration: 0.35, ease: "power1.in" }, 1.8);
+
+      // 1.85s: new row slides in at the top, pushes others down
+      tl.to(["#row-old1", "#row-old2"], { y: STEP, duration: 0.5, ease: "power3.out", stagger: 0.04 }, 1.85);
+      tl.to("#row-new", { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 1.95);
+      tl.to("#row-new-glow", { opacity: 1, duration: 0.2 }, 2.0);
+      tl.to("#row-new-glow", { opacity: 0, duration: 0.6, ease: "power1.out" }, 2.6);
+      tl.to("#count-2", { opacity: 0, y: -16, duration: 0.25, ease: "power2.in" }, 1.95);
+      tl.to("#count-3", { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 2.15);
+
+      // Marker travels to the new row's checkbox, arrives just before 4s
+      tl.to("#touch", { x: CHECK.x, y: CHECK.y, duration: 1.0, ease: "power2.inOut" }, 2.85);
+
+      // 4.0s: tap the checkbox
+      tl.to("#touch", { scale: 0.82, duration: 0.1, ease: "power2.in" }, 3.9);
+      tl.to("#touch", { scale: 1, duration: 0.2, ease: "power2.out" }, 4.0);
+      tl.to("#ripple-check", { opacity: 1, duration: 0.05 }, 4.0);
+      tl.to("#ripple-check", { scale: 0.75, duration: 0.45, ease: "power2.out" }, 4.0);
+      tl.to("#ripple-check", { opacity: 0, duration: 0.35, ease: "power1.in" }, 4.15);
+      tl.to("#box-new-fill", { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2.2)" }, 4.0);
+      tl.to("#tick-path", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 4.12);
+      tl.to("#strike", { scaleX: 1, duration: 0.35, ease: "power2.inOut" }, 4.25);
+      tl.to("#task-new", { color: "#8a8c93", duration: 0.35, ease: "power1.out" }, 4.3);
+
+      // Marker lifts away; hold the finished state
+      tl.to("#touch", { opacity: 0, scale: 1.15, duration: 0.4, ease: "power1.in" }, 4.7);
+      tl.to({}, { duration: 0.01 }, 5.98);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["todo"] = tl;
+      </script>
+</template>

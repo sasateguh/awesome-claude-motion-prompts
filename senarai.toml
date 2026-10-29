@@ -1,0 +1,727 @@
+# Senarai prompt motion Claude (M2, 29 Okt 2026 — PRD docs/PRD-gilap-senarai-awesome-baharu-awesome-cla.md, PELAN M2).
+# Dua bahagian. (1) [[prompt]] = prompt yang KITA tulis sendiri, EN + BM (K3): setiap satu menghasilkan klip motion pendek
+# dengan HTML + CSS + fon sistem sahaja (tiada imej/ikon/fon pihak ketiga dalam hasil), nilai contoh boleh ditukar pembaca,
+# satu kategori K10. Tiada prompt orang lain, tiada parafrasa repo tanpa lesen, tiada apa-apa dari kandungan partner.
+# Tajuk prompt TIDAK ditukar selepas terbit (K11: sauh dipaut sistem balasan Threads). `hasil` diisi M3/M4 (contoh dirender).
+# (2) [[entri]] = alat sumber terbuka yang pembaca boleh PAKAI untuk menghasilkan motion dengan kod atau dengan Claude:
+# pemapar video berkod, pustaka animasi web, skil/templat Claude untuk video. Senarai awesome lain, galeri video orang lain,
+# repo prompt tanpa lesen, dan produk sendiri (K9) = `kecuali` / tidak dipangkat. Keputusan dari README repo, bukan bintang.
+id = "motion"
+repo = "sasateguh/awesome-claude-motion-prompts"
+bundar_bintang = 10
+buang_fork = true
+# Calon `cari` yang ditolak semasa kurasi 29 Okt 2026 (supaya `cari` tidak mencadangkannya semula): senarai awesome / galeri
+# pesaing dan repo prompt tanpa lesen (jadual Rujukan PELAN), alat ejen/terminal umum, pustaka animasi UI/React Native/tatal
+# (bukan video), penyunting video talking-head dan kilang video AI (skop senarai `video`), skil satu bahasa/genre sempit,
+# repo kertas penyelidikan, repo tanpa lesen atau tidak aktif > 365 hari.
+kecuali = [
+  "0xS4N4TG/kinetograph",
+  "2d-inc/Flare-Swift",
+  "AbubakrChan/product-launch-motion",
+  "actionow-ai/vvv",
+  "AFASSoftware/maquette",
+  "AFK-surf/Comma",
+  "Agentchengfeng/chengfeng-videocut-skills",
+  "AgriciDaniel/claude-shorts",
+  "AgriciDaniel/claude-youtube",
+  "AKCodez/higgsfield-claude-skills",
+  "alchaincyf/huashu-motion",
+  "airbnb/lottie-web",
+  "alecs5am/ralphy",
+  "alexgreensh/anidoodle",
+  "alexmacarthur/typeit",
+  "Alexwtlf/agentic-product-demo",
+  "alioshr/memory-bank-mcp",
+  "Alisa0808/vox-director",
+  "alyssaxuu/motionity",
+  "andremion/Music-Player",
+  "andyhuo520/digital-human-koubo",
+  "Anil-matcha/vox-ai-motion-graphics-generator",
+  "ant-design/ant-motion",
+  "apenasdouglas/ai-motion-library",
+  "appariciojunior/video-editor-skills",
+  "AprilNEA/AChat",
+  "artokun/comfyui-mcp",
+  "ashishgogula/coverflow",
+  "astrofox-io/astrofox",
+  "athemeroy/awesome-claude-5-5-videos",
+  "AThevon/genjutsu",
+  "atlassian/atlassian-mcp-server",
+  "atmirrr/persian-motion-director",
+  "av/remotion-bits",
+  "bangtutorial/bang-motion",
+  "Barty-Bart/motion-graphics",
+  "baryhuang/mcp-remote-macos-use",
+  "BennyKok/omg.dev",
+  "beshuaxian/higgsfield-seedance2-jineng",
+  "bestagentkits/motion-video-skill",
+  "bigxixi/Sketch2AE",
+  "blixvip/MotionClone",
+  "blixvip/NullMotion",
+  "Bomx/super-video-maker-skill",
+  "calesthio/OpenMontage",
+  "cclank/lanshu-awesome-ai-video-kit",
+  "charlie947/motion-graphics-skills",
+  "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
+  "cindyxu1030/motion-graphics-prompt-bank",
+  "Clipcat-ai/clipcat-skill",
+  "codedbytahir/motionforge",
+  "coderitual/bounty",
+  "coleam00/hyperframes-ai-video-generation",
+  "coleam00/remote-agentic-coding-system",
+  "crashmax-dev/fireworks-js",
+  "CreateJS/TweenJS",
+  "cth9191/animate",
+  "Cuongyd196/auto-compare-video",
+  "Dakkshin/after-effects-mcp",
+  "daohoangson/flutter_widget_from_html",
+  "darsain/motio",
+  "daybrush/scenejs",
+  "dddabtc/winremote-mcp",
+  "decolua/9remote",
+  "devswha/ovis",
+  "drawcall/Proton",
+  "echris6/motion-video-kit",
+  "EGSECDA/vocaloid-style-mv-pipeline",
+  "Endless1936/book-video",
+  "Endless1936/cut-motion",
+  "erduo1998-cell/erduo-broll-loop-engineering",
+  "erhanmeydan/kilnframe",
+  "feicaiclub/video-spec-builder",
+  "feitangyuan/onetake",
+  "fliptheweb/motion-ui-design",
+  "foobar404/wave.js",
+  "gatewai-dev/framefields",
+  "geekjourneyx/hyperframes-motion-director",
+  "GetStream/motionscape-app",
+  "Golden-Promise/vscode-cc-switch",
+  "gongnyang/reelforge",
+  "GraphiteEditor/Graphite",
+  "greensock/GSAP",
+  "GTKottman/mortiflix-oss",
+  "guanmo-ai/awesome-ai-motion",
+  "Hainrixz/editor-pro-max",
+  "hassancs91/claude-faceless-shorts-creator",
+  "hassancs91/claude-youtube-editor",
+  "HeyChengC/vibe-knowledge-film",
+  "heygen-com/hyperframes-community-skills",
+  "heygen-com/hyperframes-launches",
+  "howseen-ai/claude-motion-design",
+  "hsnaydd/moveTo",
+  "huytranvan2010/AI-auto-generate-video",
+  "iart-ai/motion-design-skills",
+  "iart-ai/motion-skills",
+  "idosal/git-mcp",
+  "Illyism/seo-skills",
+  "irinabuht12-oss/google-ads-meta-ads-mcp",
+  "ItsssssJack/claude-video-2",
+  "jacklam718/react-native-modals",
+  "jaityron/new-pac-wiki",
+  "Jaycheng1103/chatgpt-video-editing-skills",
+  "jeszhou/overlay-studio",
+  "jianxinss/iching-64-motion",
+  "jj811208/watching-you",
+  "jnMetaCode/ai-shortfilm-prompts",
+  "joeseesun/opus-video-prompts",
+  "kaitranntt/ccs",
+  "kajisho5/ffmpeg-skill",
+  "kangarooking/promo-creator-skills",
+  "kevin-ssy/Optical-Flow-Guided-Feature",
+  "Kianzzz/xilo-opus-video",
+  "kopiro/siriwave",
+  "krusemediallc/video-editor-agent",
+  "kurbaitaev/ghost-editor",
+  "KyaniteLabs/kinocut",
+  "langchain-ai/design-agent",
+  "layerJS/layerJS",
+  "LBEILC/Multiplane",
+  "leggedrobotics/free_gait",
+  "lemomo-ai/lemo-opuscar",
+  "lemomo-ai/lemo-wake",
+  "Leonxlnx/cinetic",
+  "LiamGvchi/gc-still-image-motion-director",
+  "liangdabiao/hyperframes-fix",
+  "liqvidjs/liqvid",
+  "liyupi/ai-promo-video-maker",
+  "LottieFiles/dotlottie-web",
+  "louisedesadeleer/clipify",
+  "lovisdotio/motion2code",
+  "Markjinli/awesome-hyperframes-prompt",
+  "mattboldt/typed.js",
+  "maxwellito/vivus",
+  "merri-ment/lazy-line-painter",
+  "michaelvillar/dynamics.js",
+  "michalparkola/tapestry-skills",
+  "mixpeek/amux",
+  "moritzkremb/framejam",
+  "Mort1d/motion-graphics-skills",
+  "Mr-funny/hbg-life-simulation",
+  "mrachinskiy/commotion",
+  "mrsarac/ff-tracking",
+  "mutonby/vibetube",
+  "NanmiCoder/cc-haha",
+  "nateherkai/herk-edit-kit",
+  "naveen-annam/creativly.ai-brand-video-remotion",
+  "naver/egjs",
+  "Nexting-ai/nexting",
+  "nexu-io/html-anything",
+  "nexu-io/motion-anything",
+  "nodetool-ai/nodetool",
+  "Nodlik/react-pageflip",
+  "nolangz/pixel2motion",
+  "nutllwhy/code-brand-film",
+  "nutllwhy/whiteboard-book-video-skill",
+  "oil-oil/oil-motion",
+  "op7418/guizang-product-video-skill",
+  "op7418/Video-Wrapper-Skills",
+  "openfilm/openfilm",
+  "opusvideo/awesome-claude-video",
+  "Orkas-AI/Orkas-VideoStudio",
+  "OSideMedia/higgsfield-ai-prompt-skill",
+  "overwirehq/claude-code-telegram",
+  "pengchujin/livecanvas",
+  "pipeboard-co/meta-ads-mcp",
+  "pireel/pireel",
+  "pycodebr/heditor",
+  "rediumvex/ai-video-generator-claude",
+  "rehan-remade/universal-modder",
+  "Remocn/remocn",
+  "renmengwen/MuseDock",
+  "revfactory/showreel",
+  "rezoo/movis",
+  "riecodes/free247editor",
+  "robonuggets/seedance-skill",
+  "rohitg00/awesome-claude-design",
+  "sarcadass/granim.js",
+  "SeonmiP/KineTy",
+  "Sfedfcv/redesigned-pancake",
+  "sgwilym/windups",
+  "shadcn-labs/snapcn",
+  "Shaitrish/37studio",
+  "shzlw/zeu",
+  "skevy/wobble",
+  "software-mansion/react-native-reanimated",
+  "spite/ccapture.js",
+  "Sportinger/MasterSelects",
+  "stablyai/orca",
+  "storytold/effectcraft",
+  "svgdotjs/svg.js",
+  "swup/swup",
+  "Tejashmakwana/motionmaxxing",
+  "termly-dev/termly-cli",
+  "terragon-labs/terragon-oss",
+  "theatre-js/theatre",
+  "tixl3d/tixl",
+  "triggerjs/trigger",
+  "tugrawork-creator/saas-motion-kit",
+  "tuzhechen2005/opus-video-skills",
+  "unclejobs-ai/motion-video-skill",
+  "UnderleveledBuilder/awesome-short-drama-skills",
+  "UPC-ViRVIG/SparsePoser",
+  "Upload-Post/avatar-mix",
+  "usablica/kissui.scrollanim",
+  "Vincentwei1021/anything2explainer",
+  "Vincentwei1021/video-talkcraft",
+  "vizzuhq/vizzu-lib",
+  "webkul/micron",
+  "wshuyi/remotion-video-skill",
+  "wx4766/html-to-video",
+  "xiejunjie524/handdraw-story-video",
+  "YeJe-cpu/SeeCut",
+  "yihui-dev/awesome-claude-motion-videos",
+  "yihui-dev/awesome-opus5-5-videos",
+  "ymybxx/SoloMCN",
+  "zenstory-ai/drama-skills",
+  "zenstory-ai/video-recap-skills",
+  "ZeroLu/awesome-claude-motion-graphics",
+  "zhuyansen/awesome-claude-video-skills",
+  "zz85/timeliner",
+]
+
+[en]
+tajuk = "Awesome Claude Motion Prompts"
+pembuka = "Prompts we wrote for Claude that turn into short motion graphics for reels: kinetic captions, brand intros, moving charts, transitions and app demos. Each prompt is shown with the video it produced. Below them, open-source motion tools ranked by stars and recent activity, refreshed every week."
+
+[en.prompt]
+pengenalan = "Paste a prompt into Claude as it is, then swap the words, colours and numbers for your own. Each preview was rendered with HyperFrames from code written by a new Claude session that was given the English prompt and a short note on where to save the files."
+hasil = "<img src=\"{gif}\" alt=\"Preview: {tajuk}\" width=\"270\">\n\n[Video (MP4)]({mp4}) · [Source]({kod})"
+
+[ms]
+tajuk = "Senarai Prompt Motion Claude"
+pembuka = "Prompt yang kami tulis untuk Claude bagi menghasilkan motion graphic pendek untuk reel: kapsyen kinetik, pembuka jenama, carta bergerak, peralihan dan demo aplikasi. Setiap prompt dipapar bersama video yang dihasilkannya. Di bawahnya, alat motion sumber terbuka dipangkat ikut bintang dan aktiviti terkini, dikemas setiap minggu."
+
+[ms.prompt]
+pengenalan = "Tampal prompt ke dalam Claude seperti sedia ada, kemudian tukar perkataan, warna dan nombor kepada milik anda. Setiap pratonton dirender dengan HyperFrames daripada kod yang ditulis oleh sesi Claude baharu yang hanya diberi prompt bahasa Inggeris dan nota ringkas tentang tempat menyimpan fail."
+hasil = "<img src=\"{gif}\" alt=\"Pratonton: {tajuk}\" width=\"270\">\n\n[Video (MP4)]({mp4}) · [Kod sumber]({kod})"
+
+[github]
+# Topik: `gilap topik --deskripsi "<penerangan>" --wajib awesome,awesome-list --tambah hyperframes,remotion,reels,malay,
+# motion-design,kinetic-typography,video-prompts,bahasa-melayu,claude-code,animation` 29 Okt 2026. Dipilih dari calon ✓ ikut
+# makna: claude-code + animation (luas, pembaca lain) dan remotion (isi kita HyperFrames; Remotion hanya entri) ditolak.
+penerangan = "Claude prompts for motion graphics and short-form reels in English and Malay, each shown with the video it produced, plus ranked open-source motion tools."
+topik = ["awesome", "awesome-list", "claude", "prompts", "claude-prompts", "motion-graphics", "motion-design", "kinetic-typography", "hyperframes", "reels", "video-prompts", "malay"]
+
+[pangkat]
+bintang = 1.0
+aktif = 1.0
+
+[ambang]
+bintang_min = 50
+hari_tidak_aktif = 365
+
+[papar]
+# D70 (M5): GitHub tidak membalut blok kod; baris prompt dibalut pada lebar ini supaya boleh dibaca di telefon tanpa
+# menatal mendatar. Diukur WebKit iPhone 13: kotak kod 310 px / 8.16 px seaksara = 38; kad README GitHub telefon
+# ~32 px lebih sempit = ~36; 34 = ruang selamat. GIF pratonton menegak dipapar 270 px (lebar dalam label `hasil`).
+lebar_prompt = 34
+
+[aset]
+# PRD K7: GIF pratonton ≤ 2.5 MB, MP4 ≤ 4 MB, jumlah contoh/ ≤ 40 MB.
+pratonton_kb = 2560
+video_kb = 4096
+meta_kb = 64
+jumlah_mb = 40
+
+[cari]
+had = 40
+pertanyaan = [
+  'hyperframes',
+  'html to video render',
+  'programmatic video framework',
+  'motion graphics code',
+  'claude video skill',
+  'claude remotion',
+  'kinetic typography animation',
+  'javascript animation library',
+  'topic:hyperframes',
+  'topic:motion-graphics',
+  'topic:motion-design',
+  'topic:kinetic-typography',
+  'topic:programmatic-video',
+]
+
+[[kategori]]
+id = "pemapar"
+en = "Code to video renderers"
+ms = "Pemapar kod ke video"
+
+[[kategori]]
+id = "animasi"
+en = "Web animation libraries"
+ms = "Pustaka animasi web"
+
+[[kategori]]
+id = "skil"
+en = "Claude skills and starters"
+ms = "Skil dan templat Claude"
+
+[[entri]]
+repo = "heygen-com/hyperframes"
+kategori = "pemapar"
+
+[[entri]]
+repo = "remotion-dev/remotion"
+kategori = "pemapar"
+
+[[entri]]
+repo = "motion-canvas/motion-canvas"
+kategori = "pemapar"
+
+[[entri]]
+repo = "midrender/revideo"
+kategori = "pemapar"
+
+[[entri]]
+repo = "dmtrKovalenko/fframes"
+kategori = "pemapar"
+
+[[entri]]
+repo = "nexu-io/html-video"
+kategori = "pemapar"
+
+[[entri]]
+repo = "ManimCommunity/manim"
+kategori = "pemapar"
+
+[[entri]]
+repo = "3b1b/manim"
+kategori = "pemapar"
+
+[[entri]]
+repo = "juliangarnier/anime"
+kategori = "animasi"
+
+[[entri]]
+repo = "mojs/mojs"
+kategori = "animasi"
+
+[[entri]]
+repo = "motiondivision/motion"
+kategori = "animasi"
+
+[[entri]]
+repo = "LottieFiles/motion-design-skill"
+kategori = "skil"
+
+[[entri]]
+repo = "digitalsamba/claude-code-video-toolkit"
+kategori = "skil"
+
+[[entri]]
+repo = "latent-spaces/brag"
+kategori = "skil"
+
+[[entri]]
+repo = "BintzGavin/helios"
+kategori = "pemapar"
+
+[[entri]]
+repo = "haidrrrry/claude-remotion-skill"
+kategori = "skil"
+
+[[entri]]
+repo = "jhartquist/claude-remotion-kickstart"
+kategori = "skil"
+
+[[entri]]
+repo = "Vincentwei1021/video-shotcraft"
+kategori = "skil"
+
+[[entri]]
+repo = "Sunwood-ai-labs/hyperframes-motion-reel-skill"
+kategori = "skil"
+
+# ── Prompt (K10: lima kategori; kategori kosong tidak dipapar) ─────────────────────────────────────────────────────────
+
+[[kategori_prompt]]
+id = "kinetik"
+en = "Kinetic text and reel captions"
+ms = "Teks kinetik dan kapsyen reel"
+
+[[kategori_prompt]]
+id = "jenama"
+en = "Brand intros and outros"
+ms = "Pembuka dan penutup jenama"
+
+[[kategori_prompt]]
+id = "carta"
+en = "Moving charts and numbers"
+ms = "Carta dan nombor bergerak"
+
+[[kategori_prompt]]
+id = "peralihan"
+en = "Transitions and backgrounds"
+ms = "Peralihan dan latar"
+
+[[kategori_prompt]]
+id = "ui"
+en = "Product and app demos"
+ms = "Demo produk dan aplikasi"
+
+[[prompt]]
+id = "kapsyen-sorot"
+kategori = "kinetik"
+hasil = "contoh/kapsyen-sorot"
+[prompt.en]
+tajuk = "Word by word caption highlight"
+prompt = """Make a 6 second vertical video, 1080 by 1920, that shows a reel caption timed to speech.
+The sentence is: "Most people quit one week before it starts working."
+Show three or four words at a time in the lower third, in a bold sans-serif system font about 88 px, white with a soft dark shadow, on a charcoal background with a gentle vertical gradient.
+Pace it at about two and a half words per second. The word being spoken turns yellow and grows 10 percent with a quick ease-out, then settles back when the next word starts.
+Each group of words rises 30 px into place as it appears and fades out just before the next group.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Kapsyen sorot perkataan demi perkataan"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, yang memaparkan kapsyen reel mengikut rentak percakapan.
+Ayatnya: "Ramai orang berhenti seminggu sebelum usaha mereka mula menjadi."
+Papar tiga atau empat perkataan pada satu masa di sepertiga bawah, dalam fon sistem sans-serif tebal kira-kira 88 px, putih dengan bayang gelap lembut, atas latar arang dengan gradien menegak yang halus.
+Rentaknya kira-kira dua setengah perkataan sesaat. Perkataan yang sedang disebut bertukar kuning dan membesar 10 peratus dengan ease-out pantas, kemudian kembali biasa bila perkataan seterusnya bermula.
+Setiap kumpulan perkataan naik 30 px ke tempatnya semasa muncul dan pudar sebelum kumpulan seterusnya.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "tajuk-hentak"
+kategori = "kinetik"
+hasil = "contoh/tajuk-hentak"
+[prompt.en]
+tajuk = "Stacked headline slam"
+prompt = """Make a 5 second vertical video, 1080 by 1920, with a three line headline on a near-black background.
+The lines are "Stop", "posting" and "randomly", stacked and centred, in a heavy condensed sans-serif system font that fills about 80 percent of the width.
+Each line slams in 0.4 seconds after the one before: it starts at 140 percent scale and lands at 100 percent with a small overshoot. Alternate the colours white, orange, white.
+When the last line lands, give the whole block one short shake of a few pixels, then hold.
+In the final second, draw an orange underline from left to right under "randomly".
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Tajuk bertindan menghentak"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, dengan tajuk tiga baris atas latar hampir hitam.
+Barisnya "Berhenti", "posting" dan "ikut suka", bertindan dan di tengah, dalam fon sistem sans-serif tebal yang sempit dan memenuhi kira-kira 80 peratus lebar.
+Setiap baris menghentak masuk 0.4 saat selepas baris sebelumnya: bermula pada skala 140 peratus dan mendarat pada 100 peratus dengan sedikit lajakan. Selang-selikan warna putih, oren, putih.
+Bila baris terakhir mendarat, goncang seluruh blok sekali dengan pendek beberapa piksel, kemudian tahan.
+Pada saat terakhir, lukis garis bawah oren dari kiri ke kanan di bawah "ikut suka".
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "mesin-taip-sorot"
+kategori = "kinetik"
+hasil = "contoh/mesin-taip-sorot"
+[prompt.en]
+tajuk = "Typewriter hook with marker sweep"
+prompt = """Make a 6 second vertical video, 1080 by 1920, that types an opening hook on a warm cream background.
+Type "Here is what nobody tells you about saving money" letter by letter at a steady pace in a monospace system font, dark brown, about 72 px, wrapped across three or four centred lines, with a blinking text cursor at the end.
+When the typing finishes, sweep a translucent yellow marker highlight from left to right behind the words "nobody tells you", as if drawn by hand, slightly uneven at the edges.
+Hold the finished frame for the last second while the cursor keeps blinking.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Cangkuk mesin taip dengan sapuan penanda"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, yang menaip ayat pembuka atas latar krim hangat.
+Taip "Ini perkara yang tiada siapa beritahu tentang menyimpan duit" huruf demi huruf pada rentak tetap dalam fon sistem monospace, coklat gelap, kira-kira 72 px, dibalut kepada tiga atau empat baris di tengah, dengan kursor teks berkelip di hujung.
+Bila menaip selesai, sapu sorotan penanda kuning lut cahaya dari kiri ke kanan di belakang perkataan "tiada siapa beritahu", seolah-olah dilukis dengan tangan, tepinya sedikit tidak rata.
+Tahan bingkai akhir pada saat terakhir sementara kursor terus berkelip.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "logo-garis"
+kategori = "jenama"
+hasil = "contoh/logo-garis"
+[prompt.en]
+tajuk = "Line drawn logo reveal"
+prompt = """Make a 5 second vertical video, 1080 by 1920, that reveals a logo for a made-up coffee shop called "Kopi Senja".
+Build the logo as inline SVG: a circle with a simple coffee cup outline inside it and two curved steam lines above the cup.
+For the first 1.5 seconds, draw every stroke as if with a pen, using an animated stroke dash offset, in a warm brown on an off-white background.
+Then fill the circle with deep orange and turn the strokes cream, over 0.4 seconds.
+After that, fade the name "Kopi Senja" up letter by letter beneath the logo in a serif system font, followed by the smaller line "Since 2019".
+Use only HTML, CSS, inline SVG and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Logo dilukis garis demi garis"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, yang memperkenalkan logo sebuah kedai kopi rekaan bernama "Kopi Senja".
+Bina logo sebagai SVG sebaris: satu bulatan dengan garis luar cawan kopi yang ringkas di dalamnya dan dua garis wap melengkung di atas cawan.
+Untuk 1.5 saat pertama, lukis setiap garis seolah-olah dengan pen, menggunakan stroke dash offset beranimasi, dalam warna coklat hangat atas latar putih pudar.
+Kemudian isi bulatan dengan oren pekat dan tukar garis menjadi krim, dalam 0.4 saat.
+Selepas itu, munculkan nama "Kopi Senja" huruf demi huruf di bawah logo dalam fon sistem serif, diikuti baris kecil "Sejak 2019".
+Guna HTML, CSS, SVG sebaris dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "pembuka-bentuk"
+kategori = "jenama"
+hasil = "contoh/pembuka-bentuk"
+[prompt.en]
+tajuk = "Shape burst episode intro"
+prompt = """Make a 5 second vertical video, 1080 by 1920, for the opening of a short series episode.
+Start with an empty dark navy screen. At 0.2 seconds, about twenty small shapes (circles, squares and triangles in coral, mint and sand) burst outward from the centre, spinning as they travel and slowing down with an ease-out.
+At 1.8 seconds, pull the shapes back to the centre where they merge into one rounded rectangle in coral.
+Inside the rectangle, slide up the text "Episode 12" in small letters and "Pricing your first product" in a large bold sans-serif system font, white.
+Hold the title card for the final second.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Pembuka episod dengan letusan bentuk"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, untuk pembuka satu episod siri pendek.
+Mula dengan skrin biru laut gelap yang kosong. Pada 0.2 saat, kira-kira dua puluh bentuk kecil (bulatan, segi empat dan segi tiga dalam warna koral, pudina dan pasir) meletus keluar dari tengah, berpusing sambil bergerak dan perlahan dengan ease-out.
+Pada 1.8 saat, tarik semua bentuk kembali ke tengah lalu bercantum menjadi satu segi empat bersudut bulat berwarna koral.
+Dalam segi empat itu, naikkan teks "Episod 12" dalam huruf kecil dan "Menetapkan harga produk pertama" dalam fon sistem sans-serif tebal yang besar, putih.
+Tahan kad tajuk pada saat terakhir.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "kad-penutup"
+kategori = "jenama"
+hasil = "contoh/kad-penutup"
+[prompt.en]
+tajuk = "Follow end card"
+prompt = """Make a 6 second vertical video, 1080 by 1920, that works as the closing card of a reel.
+On a soft lilac background, scale in a circle 280 px wide in deep purple with the initials "NA" in white, then slide in the name "Nadia Aziz" and the handle "@yourhandle" below it.
+At 2 seconds, pop up a rounded pill button that says "Follow for part 2", white text on deep purple.
+Pulse the button twice, gently, and draw a curved arrow that points at it from the side.
+For the last second, fade in a small line at the bottom: "New videos every Tuesday".
+Use only HTML, CSS, inline SVG and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Kad penutup untuk ikut akaun"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, sebagai kad penutup sebuah reel.
+Atas latar ungu muda yang lembut, besarkan masuk satu bulatan 280 px lebar berwarna ungu pekat dengan huruf awal "NA" berwarna putih, kemudian luncurkan nama "Nadia Aziz" dan nama akaun "@akaunanda" di bawahnya.
+Pada 2 saat, munculkan butang bujur bersudut bulat bertulis "Ikut untuk bahagian 2", teks putih atas ungu pekat.
+Denyutkan butang itu dua kali dengan lembut, dan lukis anak panah melengkung yang menunjuk ke arahnya dari sisi.
+Pada saat terakhir, munculkan satu baris kecil di bawah: "Video baharu setiap Selasa".
+Guna HTML, CSS, SVG sebaris dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "kaunter-statistik"
+kategori = "carta"
+hasil = "contoh/kaunter-statistik"
+[prompt.en]
+tajuk = "Counting statistic with growth chip"
+prompt = """Make a 5 second vertical video, 1080 by 1920, that presents one statistic on a deep green background.
+In the centre, count a large number from 0 to 12,480 over 2 seconds with an ease-out, using a thousands separator and tabular digits so the width does not jump, in a bold sans-serif system font about 180 px, white.
+As the count finishes, fade in the label "followers in 30 days" underneath.
+Then slide in a small rounded chip from the right that reads "+38%" with an upward triangle, in light green.
+Treat every number as a placeholder the viewer will replace.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Statistik mengira dengan cip pertumbuhan"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, yang membentangkan satu statistik atas latar hijau tua.
+Di tengah, kira satu nombor besar dari 0 hingga 12,480 dalam 2 saat dengan ease-out, guna pemisah ribu dan digit jadual supaya lebarnya tidak melompat, dalam fon sistem sans-serif tebal kira-kira 180 px, putih.
+Bila kiraan selesai, munculkan label "pengikut dalam 30 hari" di bawahnya.
+Kemudian luncurkan cip kecil bersudut bulat dari kanan yang tertulis "+38%" dengan segi tiga menghala ke atas, dalam hijau muda.
+Anggap setiap nombor sebagai contoh yang akan ditukar penonton.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "carta-bar"
+kategori = "carta"
+hasil = "contoh/carta-bar"
+[prompt.en]
+tajuk = "Monthly bar chart that grows"
+prompt = """Make a 6 second vertical video, 1080 by 1920, with a four bar chart of monthly sales on an off-white background.
+Title at the top: "Sales, January to April", dark grey, bold sans-serif system font.
+The bars are January 12k, February 18k, March 9k and April 27k, in a muted blue with rounded tops, labelled with the month underneath.
+Grow the bars from zero one after another, 0.35 seconds apart, each with a slight overshoot, while the value above each bar counts up with it.
+When all four are up, turn the April bar coral and fade in a short note above it: "+50% on February".
+Keep every label and the note fully inside the frame, at least 60 px from each edge.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Carta bar bulanan yang membesar"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, dengan carta empat bar jualan bulanan atas latar putih pudar.
+Tajuk di atas: "Jualan, Januari hingga April", kelabu gelap, fon sistem sans-serif tebal.
+Barnya Januari 12k, Februari 18k, Mac 9k dan April 27k, dalam biru lembut dengan hujung atas bulat, dilabel dengan nama bulan di bawah.
+Besarkan bar dari sifar satu demi satu, 0.35 saat jaraknya, setiap satu dengan sedikit lajakan, sementara nilai di atas setiap bar mengira naik bersamanya.
+Bila keempat-empatnya sudah naik, tukar bar April menjadi koral dan munculkan nota pendek di atasnya: "+50% berbanding Februari".
+Pastikan setiap label dan nota itu berada sepenuhnya dalam bingkai, sekurang-kurangnya 60 px dari setiap tepi.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "donat-peratus"
+kategori = "carta"
+hasil = "contoh/donat-peratus"
+[prompt.en]
+tajuk = "Donut ring percentage"
+prompt = """Make a 5 second vertical video, 1080 by 1920, built around one percentage on a dark slate background.
+Draw a donut ring 600 px wide with a thick grey track. Over 2 seconds, fill the ring clockwise from the top to 73 percent in teal, with an ease-in-out, while the number in the middle counts from 0 to 73 with a percent sign.
+After the ring stops, fade in a two line caption below it: "of buyers read reviews" and, smaller, "before they pay".
+Finish with a small glow pulse on the end of the teal arc.
+Treat the numbers and text as placeholders.
+Use only HTML, CSS, inline SVG and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Peratus cincin donat"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, berpusatkan satu peratus atas latar batu loh gelap.
+Lukis cincin donat 600 px lebar dengan trek kelabu yang tebal. Dalam 2 saat, isi cincin mengikut arah jam dari atas hingga 73 peratus dalam warna teal, dengan ease-in-out, sementara nombor di tengah mengira dari 0 hingga 73 dengan tanda peratus.
+Selepas cincin berhenti, munculkan kapsyen dua baris di bawahnya: "pembeli membaca ulasan" dan, lebih kecil, "sebelum membayar".
+Akhiri dengan denyutan cahaya kecil di hujung lengkok teal.
+Anggap nombor dan teks sebagai contoh.
+Guna HTML, CSS, SVG sebaris dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "sapuan-pepenjuru"
+kategori = "peralihan"
+hasil = "contoh/sapuan-pepenjuru"
+[prompt.en]
+tajuk = "Diagonal band wipe"
+prompt = """Make a 4 second vertical video, 1080 by 1920, that moves between two title cards with a diagonal wipe.
+Card one: a grey background with the word "Before" in large dark text. Card two: a teal background with the word "After" in large white text, bold sans-serif system font.
+Show card one for 1.5 seconds. Then sweep three wide parallel bands (yellow, coral, then teal) diagonally across the frame from bottom left to top right, each starting 0.08 seconds after the last, each crossing in about 0.6 seconds with an ease-in-out.
+The last band leaves card two behind it. Hold card two to the end.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Sapuan jalur pepenjuru"
+prompt = """Buat video menegak 4 saat, 1080 x 1920, yang beralih antara dua kad tajuk dengan sapuan pepenjuru.
+Kad pertama: latar kelabu dengan perkataan "Sebelum" dalam teks gelap yang besar. Kad kedua: latar teal dengan perkataan "Selepas" dalam teks putih yang besar, fon sistem sans-serif tebal.
+Papar kad pertama selama 1.5 saat. Kemudian sapu tiga jalur lebar yang selari (kuning, koral, kemudian teal) secara pepenjuru merentas bingkai dari kiri bawah ke kanan atas, setiap satu bermula 0.08 saat selepas yang sebelumnya, setiap satu melintas dalam kira-kira 0.6 saat dengan ease-in-out.
+Jalur terakhir meninggalkan kad kedua di belakangnya. Tahan kad kedua hingga akhir.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "grid-titik"
+kategori = "peralihan"
+hasil = "contoh/grid-titik"
+[prompt.en]
+tajuk = "Dot grid ripple behind a chapter title"
+prompt = """Make a 6 second vertical video, 1080 by 1920, with a chapter title over a moving dot grid.
+Fill the frame with a grid of small dots, 12 across and 21 down, in a muted blue on a very dark blue background.
+Send a ripple through the grid from the bottom left corner: each dot grows and brightens as the wave reaches it, then shrinks back, with the delay based on its distance from the corner. Run two waves, 2.5 seconds apart.
+At 1 second, fade in "Chapter 2" in small spaced capitals and "Getting your first ten customers" in a large bold sans-serif system font, white, centred over the grid.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Riak grid titik di belakang tajuk bab"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, dengan tajuk bab di atas grid titik yang bergerak.
+Penuhi bingkai dengan grid titik kecil, 12 melintang dan 21 menegak, dalam biru lembut atas latar biru sangat gelap.
+Hantar riak melalui grid dari sudut kiri bawah: setiap titik membesar dan menjadi terang bila gelombang sampai kepadanya, kemudian mengecil semula, dengan kelewatan ikut jaraknya dari sudut itu. Jalankan dua gelombang, 2.5 saat jaraknya.
+Pada 1 saat, munculkan "Bab 2" dalam huruf besar kecil yang berjarak dan "Mendapat sepuluh pelanggan pertama" dalam fon sistem sans-serif tebal yang besar, putih, di tengah atas grid.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "demo-ketik"
+kategori = "ui"
+hasil = "contoh/demo-ketik"
+[prompt.en]
+tajuk = "App tap through demo"
+prompt = """Make a 6 second vertical video, 1080 by 1920, that demonstrates one action in a simple to-do app.
+In the centre, draw a phone outline with CSS: a rounded rectangle about 760 by 1560 px with a dark bezel. Inside it, show a light app screen titled "Today" with two existing tasks.
+At 1 second, a round translucent touch marker glides to an "Add task" button at the bottom and taps it, with a short ripple.
+A new task row, "Send the quote to Aina", slides in at the top of the list and pushes the others down.
+At 4 seconds, the marker taps the new row's checkbox: the box fills green, a tick draws itself, and the text gets a line through it.
+Use only HTML, CSS, inline SVG and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Demo ketik aplikasi"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, yang menunjukkan satu tindakan dalam aplikasi senarai tugasan yang ringkas.
+Di tengah, lukis garis luar telefon dengan CSS: segi empat bersudut bulat kira-kira 760 x 1560 px dengan bingkai gelap. Di dalamnya, papar skrin aplikasi cerah bertajuk "Hari ini" dengan dua tugasan sedia ada.
+Pada 1 saat, penanda sentuhan bulat lut cahaya meluncur ke butang "Tambah tugasan" di bawah dan mengetiknya, dengan riak pendek.
+Baris tugasan baharu, "Hantar sebut harga kepada Aina", meluncur masuk di atas senarai dan menolak yang lain ke bawah.
+Pada 4 saat, penanda mengetik kotak semak baris baharu itu: kotak terisi hijau, tanda betul melukis dirinya, dan teksnya dipotong dengan garisan.
+Guna HTML, CSS, SVG sebaris dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "notifikasi-bertindan"
+kategori = "ui"
+hasil = "contoh/notifikasi-bertindan"
+[prompt.en]
+tajuk = "Stacked order notifications"
+prompt = """Make a 5 second vertical video, 1080 by 1920, that shows a small shop's good morning as phone notifications.
+On a blurred-looking lock screen made from a soft blue to violet gradient, show the time "9:41" at the top in a large thin system font.
+Drop three notification cards from the top, one every 0.9 seconds: "New order #1042", "Payment received RM 89.00" and "Order #1042 shipped".
+Each card is solid white, rounded, with a small coloured square as the app mark and a "now" timestamp. As a new card arrives, the older cards slide down and shrink slightly behind it, so only a thin strip of each one shows below the newest card, like a real stack.
+Use only HTML, CSS and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Notifikasi pesanan bertindan"
+prompt = """Buat video menegak 5 saat, 1080 x 1920, yang menunjukkan pagi yang baik sebuah kedai kecil melalui notifikasi telefon.
+Atas skrin kunci yang nampak kabur, dibuat daripada gradien biru lembut ke ungu, papar masa "9:41" di atas dalam fon sistem nipis yang besar.
+Jatuhkan tiga kad notifikasi dari atas, satu setiap 0.9 saat: "Pesanan baharu #1042", "Bayaran diterima RM 89.00" dan "Pesanan #1042 dihantar".
+Setiap kad putih padu, bersudut bulat, dengan segi empat kecil berwarna sebagai tanda aplikasi dan cap masa "baru". Bila kad baharu tiba, kad lama meluncur ke bawah dan mengecil sedikit di belakangnya, sehingga hanya jalur nipis setiap satu kelihatan di bawah kad terbaharu, seperti timbunan sebenar.
+Guna HTML, CSS dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+[[prompt]]
+id = "carian-taip"
+kategori = "ui"
+hasil = "contoh/carian-taip"
+[prompt.en]
+tajuk = "Search bar typing demo"
+prompt = """Make a 6 second vertical video, 1080 by 1920, that shows someone searching in a simple app.
+Near the top of a white screen, draw a rounded search bar with a magnifier made from CSS or inline SVG.
+Type "nasi lemak near me" into the bar, one letter at a time, with a blinking cursor.
+After the third word, open a dropdown of three suggestions under the bar; the second one, "nasi lemak near me open now", highlights as if hovered and is then chosen.
+The dropdown closes and three result cards slide up from the bottom one after another, each with a coloured square placeholder, a shop name, a star rating drawn with text and a distance such as "0.8 km".
+Use only HTML, CSS, inline SVG and system fonts, with no images, icons or fonts from outside."""
+[prompt.ms]
+tajuk = "Demo menaip di bar carian"
+prompt = """Buat video menegak 6 saat, 1080 x 1920, yang menunjukkan seseorang mencari dalam aplikasi ringkas.
+Berhampiran bahagian atas skrin putih, lukis bar carian bersudut bulat dengan kanta pembesar yang dibuat dengan CSS atau SVG sebaris.
+Taip "nasi lemak dekat sini" ke dalam bar, satu huruf pada satu masa, dengan kursor berkelip.
+Selepas perkataan ketiga, buka senarai cadangan tiga baris di bawah bar; yang kedua, "nasi lemak dekat sini buka sekarang", disorot seolah-olah tetikus di atasnya, kemudian dipilih.
+Senarai cadangan tertutup dan tiga kad hasil meluncur naik dari bawah satu demi satu, setiap satu dengan segi empat berwarna sebagai pemegang tempat, nama kedai, penarafan bintang yang dilukis dengan teks dan jarak seperti "0.8 km".
+Guna HTML, CSS, SVG sebaris dan fon sistem sahaja, tanpa imej, ikon atau fon dari luar."""
+
+# ── Seksyen (K8): satu ayat setiap satu, jujur, tiada harga. Ayat Cutt disemak dengan cutt.my/en 29 Okt 2026 (talking-head). ──
+
+[[seksyen]]
+id = "tanpa-setup"
+[seksyen.en]
+tajuk = "No setup"
+badan = "[Cutt](https://cutt.my/en) is a Claude connector that edits 9:16 talking-head videos inside Claude: upload a video, name a style, and Claude adds B-roll, icons and kinetic type that follow your words. Cutt is made by Sasa Teguh, the maintainer of this list."
+[seksyen.ms]
+tajuk = "Tanpa setup"
+badan = "[Cutt](https://cutt.my) ialah connector Claude yang menyunting video talking-head 9:16 dalam Claude: muat naik video, sebut gaya, dan Claude menambah B-roll, ikon dan tipografi kinetik yang mengikut kata-kata anda. Cutt dibina oleh Sasa Teguh, penyelenggara senarai ini."
+
+[[seksyen]]
+id = "dibuatkan"
+[seksyen.en]
+tajuk = "Made for you"
+badan = "If you would rather have a motion piece made for you, [contact Sasa Teguh](https://sasateguh.com/contact), the team that maintains this list."
+[seksyen.ms]
+tajuk = "Dibuatkan untuk anda"
+badan = "Jika anda mahu motion dibuatkan untuk anda, [hubungi Sasa Teguh](https://sasateguh.com/ms/contact), pasukan yang menyelenggara senarai ini."

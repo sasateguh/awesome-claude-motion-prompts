@@ -1,0 +1,312 @@
+<template>
+  <style>
+      #root {
+        /* palette */
+        --sky-top: #8fb6f2;
+        --sky-mid: #8e95ea;
+        --sky-bottom: #9a7ad9;
+        --ink: #ffffff;
+        --card: #ffffff;
+        --card-ink: #111216;
+        --card-muted: #6b6f7a;
+        --mark-order: #ff8a3d;
+        --mark-pay: #2fbf71;
+        --mark-ship: #3b82f6;
+        --font-system: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      #root {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        font-family: var(--font-system);
+      }
+      #lock {
+        position: absolute;
+        inset: 0;
+      }
+      /* Soft "blurred wallpaper": layered radial gradients, no filters. */
+      #wall {
+        position: absolute;
+        inset: -120px;
+        background:
+          radial-gradient(620px 620px at 18% 22%, rgba(186, 220, 255, 0.85), rgba(186, 220, 255, 0) 70%),
+          radial-gradient(700px 700px at 88% 48%, rgba(196, 156, 255, 0.75), rgba(196, 156, 255, 0) 70%),
+          radial-gradient(760px 760px at 26% 86%, rgba(132, 104, 230, 0.8), rgba(132, 104, 230, 0) 70%),
+          radial-gradient(520px 520px at 70% 12%, rgba(255, 214, 236, 0.45), rgba(255, 214, 236, 0) 70%),
+          linear-gradient(170deg, var(--sky-top) 0%, var(--sky-mid) 48%, var(--sky-bottom) 100%);
+      }
+      #status {
+        position: absolute;
+        top: 46px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 84px;
+        color: var(--ink);
+        font-size: 34px;
+        font-weight: 600;
+      }
+      .status-icons {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 24px;
+      }
+      .bars i {
+        display: block;
+        width: 6px;
+        border-radius: 2px;
+        background: var(--ink);
+      }
+      .battery {
+        position: relative;
+        width: 52px;
+        height: 25px;
+        border: 3px solid rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 2px;
+      }
+      .battery b {
+        display: block;
+        width: 80%;
+        height: 100%;
+        border-radius: 3px;
+        background: var(--ink);
+      }
+      #lockicon {
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        width: 34px;
+        height: 30px;
+        margin-left: -17px;
+        border-radius: 6px;
+        background: var(--ink);
+      }
+      #lockicon::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: -18px;
+        width: 22px;
+        height: 24px;
+        border: 4px solid var(--ink);
+        border-bottom: 0;
+        border-radius: 12px 12px 0 0;
+      }
+      #clock {
+        position: absolute;
+        top: 220px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: var(--ink);
+      }
+      #date {
+        font-size: 44px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        opacity: 0.92;
+      }
+      #time {
+        font-size: 260px;
+        font-weight: 200;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        margin-top: 4px;
+      }
+      #stack {
+        position: absolute;
+        top: 700px;
+        left: 60px;
+        width: 960px;
+        height: 340px;
+      }
+      .card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 960px;
+        height: 214px;
+        border-radius: 46px;
+        background: var(--card);
+        color: var(--card-ink);
+        padding: 34px 40px;
+        transform-origin: 50% 100%;
+        box-shadow: 0 18px 50px rgba(52, 36, 120, 0.22);
+        overflow: hidden;
+      }
+      #card1 { z-index: 1; }
+      #card2 { z-index: 2; }
+      #card3 { z-index: 3; }
+      .card-head {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        flex: none;
+      }
+      .app {
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--card-muted);
+      }
+      .when {
+        margin-left: auto;
+        font-size: 30px;
+        color: var(--card-muted);
+      }
+      .msg {
+        margin-top: 26px;
+        font-size: 50px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .shade {
+        position: absolute;
+        inset: 0;
+        background: #3a2f78;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #home {
+        position: absolute;
+        bottom: 26px;
+        left: 50%;
+        width: 300px;
+        height: 12px;
+        margin-left: -150px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.85);
+      }
+    </style>
+  <div
+    id="root"
+    data-composition-id="lockscreen"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='[{"id":"clock","type":"string","label":"Clock","default":"9:41"},{"id":"greeting","type":"string","label":"Greeting","default":"Good morning"},{"id":"msg1","type":"string","label":"Notification 1","default":"New order #1042"},{"id":"msg2","type":"string","label":"Notification 2","default":"Payment received RM 89.00"},{"id":"msg3","type":"string","label":"Notification 3","default":"Order #1042 shipped"}]'
+  >
+    <div
+      id="lock"
+      class="clip"
+      data-start="0"
+      data-duration="5"
+      data-layout-allow-overlap
+      data-layout-allow-overflow
+    >
+        <div id="wall"></div>
+
+        <div id="status">
+          <span></span>
+          <span class="status-icons">
+            <span class="bars"><i style="height: 9px"></i><i style="height: 13px"></i><i style="height: 18px"></i><i style="height: 24px"></i></span>
+            <span class="battery"><b></b></span>
+          </span>
+        </div>
+
+        <div id="lockicon"></div>
+
+        <div id="clock">
+          <div id="date" data-var-text="greeting">Good morning</div>
+          <div id="time" data-var-text="clock">9:41</div>
+        </div>
+
+        <div id="stack">
+          <div class="card" id="card1">
+            <div class="card-head">
+              <span class="mark" style="background: var(--mark-order)"></span>
+              <span class="app">Shop Orders</span>
+              <span class="when">now</span>
+            </div>
+            <div class="msg" data-var-text="msg1">New order #1042</div>
+            <div class="shade"></div>
+          </div>
+          <div class="card" id="card2">
+            <div class="card-head">
+              <span class="mark" style="background: var(--mark-pay)"></span>
+              <span class="app">Payments</span>
+              <span class="when">now</span>
+            </div>
+            <div class="msg" data-var-text="msg2">Payment received RM 89.00</div>
+            <div class="shade"></div>
+          </div>
+          <div class="card" id="card3">
+            <div class="card-head">
+              <span class="mark" style="background: var(--mark-ship)"></span>
+              <span class="app">Shipping</span>
+              <span class="when">now</span>
+            </div>
+            <div class="msg" data-var-text="msg3">Order #1042 shipped</div>
+            <div class="shade"></div>
+          </div>
+        </div>
+
+        <div id="home"></div>
+    </div>
+  </div>
+  <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Stack geometry: each step back slides down and shrinks, leaving a thin strip.
+      const STEP_Y = 26;
+      const STEP_SCALE = 0.055;
+      const SHADE = 0.1;
+      const ARRIVE = [0.45, 1.35, 2.25]; // one card every 0.9 s
+      const cards = ["#card1", "#card2", "#card3"];
+
+      // Wallpaper breathes very slowly so the frame never feels frozen.
+      tl.fromTo("#wall", { scale: 1.06, x: -20, y: 10 }, { scale: 1, x: 20, y: -10, duration: 5, ease: "none" }, 0);
+
+      // Clock settles in.
+      tl.fromTo("#clock", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.fromTo(["#status", "#lockicon", "#home"], { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+
+      // Cards start hidden above the stack.
+      tl.set(cards, { y: -520, scale: 1, opacity: 0 }, 0);
+
+      cards.forEach((card, i) => {
+        const t = ARRIVE[i];
+        // The new card drops in from the top.
+        tl.fromTo(
+          card,
+          { y: -520, opacity: 0, scale: 1.02 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.15)", immediateRender: false },
+          t
+        );
+        // Every older card moves one step further back.
+        for (let j = 0; j < i; j++) {
+          const depth = i - j;
+          const prev = depth - 1;
+          tl.fromTo(
+            cards[j],
+            { y: prev * STEP_Y, scale: 1 - prev * STEP_SCALE },
+            { y: depth * STEP_Y, scale: 1 - depth * STEP_SCALE, duration: 0.5, ease: "power3.out", immediateRender: false },
+            t + 0.08
+          );
+          tl.fromTo(
+            cards[j] + " .shade",
+            { opacity: prev * SHADE },
+            { opacity: depth * SHADE, duration: 0.5, ease: "power2.out", immediateRender: false },
+            t + 0.08
+          );
+        }
+      });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["lockscreen"] = tl;
+    </script>
+</template>

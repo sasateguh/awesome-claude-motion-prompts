@@ -1,0 +1,135 @@
+<template>
+  <style>
+      #root {
+        --ground: #0b3d2c;
+        --accent: #9be7b4;
+        --ink: #ffffff;
+        --ink-soft: rgba(255, 255, 255, 0.78);
+        --chip-ink: #0b3d2c;
+        /* System sans only: nothing is loaded from outside. */
+        --font-sys: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      #root * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #root {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+        font-family: var(--font-sys);
+      }
+      #stat-bg {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+      }
+      #stat-group {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        text-align: center;
+      }
+      #count {
+        color: var(--ink);
+        font-size: 180px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
+        white-space: nowrap;
+      }
+      #label {
+        color: var(--ink-soft);
+        font-size: 52px;
+        font-weight: 600;
+        line-height: 1.2;
+        opacity: 0;
+      }
+      #chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 12px;
+        padding: 18px 34px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--chip-ink);
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        opacity: 0;
+      }
+      /* Upward triangle drawn in CSS: no icon font or glyph fallback. */
+      #chip-arrow {
+        width: 30px;
+        height: 26px;
+        background: currentColor;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
+      </style>
+  <div
+    id="root"
+    data-composition-id="stat"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='[
+    {"id":"value","type":"number","label":"Number (placeholder)","default":12480,"min":0,"step":1},
+    {"id":"label","type":"string","label":"Label (placeholder)","default":"followers in 30 days","maxLength":40},
+    {"id":"change","type":"string","label":"Change chip (placeholder)","default":"+38%","maxLength":8},
+    {"id":"ground","type":"color","label":"Background","default":"#0b3d2c"},
+    {"id":"accent","type":"color","label":"Chip green","default":"#9be7b4"}
+  ]'
+  >
+    <div id="stat-bg"></div>
+    <div id="stat-group" class="clip" data-start="0" data-duration="5" data-track-index="0">
+      <div id="count" aria-label="12,480">0</div>
+      <div id="label" data-var-text="label">followers in 30 days</div>
+      <div id="chip"><span id="chip-arrow"></span><span id="chip-text" data-var-text="change">+38%</span></div>
+    </div>
+  </div>
+  <script>
+      // Placeholder values: change them in the Variables panel (or the defaults above).
+      const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+      const target = Number.isFinite(Number(vars.value)) ? Number(vars.value) : 12480;
+      const sceneRoot = document.querySelector('[data-composition-id="stat"]');
+      if (sceneRoot && vars.ground) sceneRoot.style.setProperty("--ground", vars.ground);
+      if (sceneRoot && vars.accent) sceneRoot.style.setProperty("--accent", vars.accent);
+
+      const fmt = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+      const countEl = document.getElementById("count");
+      const counter = { v: 0 };
+      const render = () => {
+        countEl.textContent = fmt.format(Math.round(counter.v));
+      };
+      countEl.setAttribute("aria-label", fmt.format(target));
+      render();
+
+      const tl = gsap.timeline({ paused: true });
+
+      // 0.3 s -> 2.3 s: count 0 -> target, ease-out.
+      tl.fromTo(counter, { v: 0 }, { v: target, duration: 2, ease: "power3.out", onUpdate: render }, 0.3);
+
+      // As the count lands: label fades in underneath.
+      tl.fromTo("#label", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.1);
+
+      // Then the chip slides in from the right.
+      tl.fromTo(
+        "#chip",
+        { opacity: 0, x: 640 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+        2.75
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["stat"] = tl;
+      tl.seek(0);
+      </script>
+</template>

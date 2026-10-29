@@ -1,0 +1,120 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      /* Caption look: change here. */
+      --cap-ink: #ffffff;
+      --cap-hot: #ffd60a;
+      --cap-size: 88px;
+      --cap-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    /* Each group: full-width box in the lower third, text centred.
+       Baseline band sits above the 1330 px platform UI line. */
+    .cap-group {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1150px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .cap-line {
+      font-family: var(--cap-font);
+      font-weight: 800;
+      font-size: var(--cap-size);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--cap-ink);
+      text-align: center;
+      white-space: nowrap;
+      text-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.55),
+        0 2px 4px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+    }
+    .cap-word {
+      display: inline-block;
+      margin: 0 0.12em;
+      transform-origin: 50% 60%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <!-- Group 1 -->
+    <div id="cap-g1" class="clip cap-group" data-start="0.38" data-duration="1.3" data-track-index="0">
+      <div id="cap-g1-line" class="cap-line">
+        <span id="cap-w0" class="cap-word">Most</span><span id="cap-w1" class="cap-word">people</span><span id="cap-w2" class="cap-word">quit</span>
+      </div>
+    </div>
+    <!-- Group 2 -->
+    <div id="cap-g2" class="clip cap-group" data-start="1.68" data-duration="1.3" data-track-index="0">
+      <div id="cap-g2-line" class="cap-line">
+        <span id="cap-w3" class="cap-word">one</span><span id="cap-w4" class="cap-word">week</span><span id="cap-w5" class="cap-word">before</span>
+      </div>
+    </div>
+    <!-- Group 3 -->
+    <div id="cap-g3" class="clip cap-group" data-start="2.98" data-duration="2.92" data-track-index="0">
+      <div id="cap-g3-line" class="cap-line">
+        <span id="cap-w6" class="cap-word">it</span><span id="cap-w7" class="cap-word">starts</span><span id="cap-w8" class="cap-word">working.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Word timings (seconds): 0.4 s per word = 2.5 words/s, a 0.1 s breath between groups.
+    const WORDS = [
+      { id: "cap-w0", start: 0.5, end: 0.9 },
+      { id: "cap-w1", start: 0.9, end: 1.3 },
+      { id: "cap-w2", start: 1.3, end: 1.7 },
+      { id: "cap-w3", start: 1.8, end: 2.2 },
+      { id: "cap-w4", start: 2.2, end: 2.6 },
+      { id: "cap-w5", start: 2.6, end: 3.0 },
+      { id: "cap-w6", start: 3.1, end: 3.5 },
+      { id: "cap-w7", start: 3.5, end: 3.9 },
+      { id: "cap-w8", start: 3.9, end: 4.5 },
+    ];
+    // Groups: in = when it starts rising, out = when it is fully gone (= its clip end).
+    const GROUPS = [
+      { id: "cap-g1-line", in: 0.38, out: 1.68 },
+      { id: "cap-g2-line", in: 1.68, out: 2.98 },
+      { id: "cap-g3-line", in: 2.98, out: 5.9 },
+    ];
+    const RISE = 30;
+    const ENTER = 0.28;
+    const EXIT = 0.12;
+
+    const INK = "#ffffff";
+    const HOT = "#ffd60a";
+
+    const tl = gsap.timeline({ paused: true });
+
+    // Set the resting state of every word at time 0 so seeking backwards is clean.
+    WORDS.forEach((w) => tl.set("#" + w.id, { color: INK, scale: 1 }, 0));
+
+    GROUPS.forEach((g) => {
+      const el = "#" + g.id;
+      tl.fromTo(el, { opacity: 0, y: RISE }, { opacity: 1, y: 0, duration: ENTER, ease: "power3.out" }, g.in);
+      // Fade out just before the next group arrives.
+      tl.to(el, { opacity: 0, duration: EXIT, ease: "power2.in" }, g.out - EXIT - 0.02);
+    });
+
+    WORDS.forEach((w) => {
+      const el = "#" + w.id;
+      // Spoken: yellow + 10% larger, quick ease-out.
+      tl.fromTo(
+        el,
+        { color: INK, scale: 1 },
+        { color: HOT, scale: 1.1, duration: 0.14, ease: "power2.out", immediateRender: false },
+        w.start,
+      );
+      // Settle back when the next word starts.
+      tl.to(el, { color: INK, scale: 1, duration: 0.18, ease: "power2.out" }, w.end);
+    });
+
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

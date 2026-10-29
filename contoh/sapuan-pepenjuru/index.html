@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <style>
+      /*
+        Diagonal wipe, HTML + CSS only.
+        Timing (seconds): card one holds 0 – 1.5; bands start at 1.50 / 1.58 / 1.66,
+        each crosses in 0.6 s (ease-in-out); the teal band's trailing edge uncovers
+        card two, which holds from ~2.26 to 4.0.
+        Geometry: each band is rotated -45deg, so its local x axis points up-right
+        (bottom-left -> top-right). Along that axis the 1080x1920 frame spans
+        -1060 px .. +1060 px from centre; a 700 px band travels -1450 -> +1450,
+        starting and ending fully off-frame.
+      */
+      :root {
+        --grey: #c9cbcf;
+        --dark: #1f2328;
+        --yellow: #ffd23f;
+        --coral: #ff6f59;
+        --teal: #0f9d94;
+        --white: #ffffff;
+        --font-system: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        --ease: cubic-bezier(0.65, 0, 0.35, 1);
+        --cross: 0.6s;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--grey);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        font-family: var(--font-system);
+      }
+      .card {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card h1 {
+        font-family: var(--font-system);
+        font-weight: 800;
+        font-size: 240px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      #card-before {
+        z-index: 1;
+        background: var(--grey);
+      }
+      #card-before h1 {
+        color: var(--dark);
+      }
+      #card-after {
+        z-index: 2;
+      }
+      /* Card two is revealed by a half-plane that follows the teal band's trailing edge. */
+      #after-face {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--teal);
+        clip-path: polygon(-3966px -1000px, 34px 3000px, -5000px 3000px, -5000px -1000px);
+        animation: reveal var(--cross) var(--ease) 1.66s 1 both;
+      }
+      #after-face h1 {
+        color: var(--white);
+      }
+      #bands {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .band {
+        position: absolute;
+        left: 190px; /* (1080 - 700) / 2 */
+        top: -240px; /* (1920 - 2400) / 2 */
+        width: 700px;
+        height: 2400px;
+        transform: rotate(-45deg) translateX(-1450px);
+        animation-name: sweep;
+        animation-duration: var(--cross);
+        animation-timing-function: var(--ease);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+      }
+      #band-yellow {
+        background: var(--yellow);
+        z-index: 3;
+        animation-delay: 1.5s;
+      }
+      #band-coral {
+        background: var(--coral);
+        z-index: 2;
+        animation-delay: 1.58s;
+      }
+      #band-teal {
+        background: var(--teal);
+        z-index: 1;
+        animation-delay: 1.66s;
+      }
+      @keyframes sweep {
+        from {
+          transform: rotate(-45deg) translateX(-1450px);
+        }
+        to {
+          transform: rotate(-45deg) translateX(1450px);
+        }
+      }
+      /*
+        Trailing edge of the teal band at offset s along the sweep axis is the line
+        X - Y = 1.4142 * s - 420 (frame pixels). s runs -1800 -> 1100 in step with
+        the band, so the line constant c runs -2966 -> 1136. The polygon covers the
+        lower-left side of that line (the side the band has already passed).
+      */
+      @keyframes reveal {
+        from {
+          clip-path: polygon(-3966px -1000px, 34px 3000px, -5000px 3000px, -5000px -1000px);
+        }
+        to {
+          clip-path: polygon(136px -1000px, 4136px 3000px, -5000px 3000px, -5000px -1000px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="4"
+      data-width="1080"
+      data-height="1920"
+      data-no-timeline
+    >
+      <section id="card-before" class="card">
+        <h1>Before</h1>
+      </section>
+      <section id="card-after" class="card">
+        <div id="after-face"><h1>After</h1></div>
+      </section>
+      <div id="bands" data-layout-allow-overflow>
+        <div id="band-yellow" class="band"></div>
+        <div id="band-coral" class="band"></div>
+        <div id="band-teal" class="band"></div>
+      </div>
+    </div>
+  </body>
+</html>

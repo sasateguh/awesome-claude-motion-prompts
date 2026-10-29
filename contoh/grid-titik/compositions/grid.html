@@ -1,0 +1,123 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      /* Palette: very dark blue ground, muted blue dots, pale blue wave crest. */
+      --ground: #070d1c;
+      --dot: #33507e;
+      --glow: #a9cbff;
+      background: var(--ground);
+    }
+    /* 12 columns x 21 rows filling the frame (90 x ~91.4 px cells). */
+    #grid-dots {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(21, 1fr);
+      place-items: center;
+    }
+    .grid-dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--dot);
+    }
+    /* Soft darkening behind the title so it reads while waves pass under it. */
+    #grid-shade {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 620px 500px at 50% 50%,
+        rgba(7, 13, 28, 0.8) 0%,
+        rgba(7, 13, 28, 0.5) 45%,
+        rgba(7, 13, 28, 0) 100%
+      );
+    }
+  </style>
+  <div
+    id="root"
+    data-composition-id="grid"
+    data-width="1080"
+    data-height="1920"
+    data-layout-allow-overlap
+  >
+    <div id="grid-dots">
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+      <i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i><i class="grid-dot"></i>
+    </div>
+    <div id="grid-shade"></div>
+  </div>
+  <script>
+    (() => {
+      const W = 1080;
+      const H = 1920;
+      const COLS = 12;
+      const ROWS = 21;
+      const WAVE_STARTS = [0.15, 2.65]; // two waves, 2.5 s apart
+      const SPEED = 1250; // px per second the wavefront travels from the corner
+      const RISE = 0.32; // seconds to grow + brighten
+      const FALL = 0.62; // seconds to shrink back
+      const PEAK_SCALE = 2.6;
+
+      const dots = document.getElementById("grid-dots");
+      const css = getComputedStyle(dots); // custom properties inherit from the scene root
+      const base = css.getPropertyValue("--dot").trim() || "#33507e";
+      const glow = css.getPropertyValue("--glow").trim() || "#a9cbff";
+
+      const tl = gsap.timeline({ paused: true });
+
+      dots.querySelectorAll(".grid-dot").forEach((el, i) => {
+        const col = i % COLS;
+        const row = Math.floor(i / COLS);
+        // distance from the bottom-left corner of the frame to this dot's centre
+        const dx = (col + 0.5) * (W / COLS);
+        const dy = H - (row + 0.5) * (H / ROWS);
+        const delay = Math.hypot(dx, dy) / SPEED;
+        tl.set(el, { scale: 1, backgroundColor: base }, 0);
+        WAVE_STARTS.forEach((start) => {
+          const t = start + delay;
+          tl.fromTo(
+            el,
+            { scale: 1, backgroundColor: base },
+            { scale: PEAK_SCALE, backgroundColor: glow, duration: RISE, ease: "sine.out", immediateRender: false },
+            t,
+          );
+          tl.fromTo(
+            el,
+            { scale: PEAK_SCALE, backgroundColor: glow },
+            { scale: 1, backgroundColor: base, duration: FALL, ease: "sine.inOut", immediateRender: false },
+            t + RISE,
+          );
+        });
+      });
+
+      tl.set({}, {}, 6); // span the full 6 s
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["grid"] = tl;
+    })();
+  </script>
+</template>

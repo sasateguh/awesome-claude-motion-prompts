@@ -1,0 +1,139 @@
+<template>
+  <style>
+    /* Heavy condensed SYSTEM faces only (resolved with local(), nothing downloaded).
+       macOS/Windows: Impact. Linux render hosts: Liberation/Nimbus/DejaVu narrow-condensed bold. */
+    @font-face {
+      font-family: "Headline System";
+      font-weight: 900;
+      src: local("Impact"), local("Haettenschweiler"), local("Arial Narrow Bold"),
+        local("ArialNarrow-Bold"), local("Liberation Sans Narrow Bold"),
+        local("LiberationSansNarrow-Bold"), local("Nimbus Sans Narrow Bold"),
+        local("NimbusSansNarrow-Bold"), local("DejaVu Sans Condensed Bold"),
+        local("DejaVuSansCondensed-Bold");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      background: var(--ground, #0b0b0c);
+      font-family: "Headline System", sans-serif;
+    }
+    #headline-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Lift the block a little so it sits inside the 168-1330 px social safe band. */
+      padding-bottom: 140px;
+    }
+    #headline-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hl-line {
+      display: block;
+      font-size: 230px; /* replaced at init: the widest line spans 80% of the frame */
+      font-weight: 900;
+      font-stretch: condensed;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transform-origin: 50% 55%;
+      opacity: 0;
+    }
+    #headline-l1,
+    #headline-l3 {
+      color: var(--ink, #ffffff);
+    }
+    #headline-l2 {
+      color: var(--accent, #ff6a13);
+    }
+    #headline-l3wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    #headline-underline {
+      height: 22px;
+      margin-top: 18px;
+      background: var(--accent, #ff6a13);
+      transform-origin: 0% 50%;
+    }
+  </style>
+  <div
+    id="root"
+    data-composition-id="headline"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='[{"id":"line1","type":"string","label":"Line 1 (white)","default":"Stop"},{"id":"line2","type":"string","label":"Line 2 (orange)","default":"posting"},{"id":"line3","type":"string","label":"Line 3 (white, underlined)","default":"randomly"}]'
+  >
+    <div id="headline-stage" class="clip" data-start="0" data-duration="5" data-layout-allow-overflow>
+      <div id="headline-block">
+        <span id="headline-l1" class="hl-line" data-var-text="line1">Stop</span>
+        <span id="headline-l2" class="hl-line" data-var-text="line2">posting</span>
+        <div id="headline-l3wrap">
+          <span id="headline-l3" class="hl-line" data-var-text="line3">randomly</span>
+          <div id="headline-underline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // One font size for all three lines, chosen so the widest line is 80% of the frame width.
+      const target = 1080 * 0.8;
+      const base = 230;
+      const lines = Array.from(document.querySelectorAll("#headline-block .hl-line"));
+      lines.forEach((el) => (el.style.fontSize = base + "px"));
+      const widest = Math.max(...lines.map((el) => el.scrollWidth));
+      if (widest > 0) {
+        const size = Math.round((base * target) / widest);
+        lines.forEach((el) => (el.style.fontSize = size + "px"));
+      }
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Slam: each line 0.4 s after the previous, 140% -> 100% with a small overshoot.
+      const SLAM = 0.34;
+      ["#headline-l1", "#headline-l2", "#headline-l3"].forEach((id, i) => {
+        const at = i * 0.4;
+        tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none" }, at);
+        tl.fromTo(id, { scale: 1.4 }, { scale: 1, duration: SLAM, ease: "back.out(2.2)" }, at);
+      });
+
+      // One short shake of the whole block as the last line lands, then hold.
+      const landed = 0.8 + SLAM;
+      tl.fromTo(
+        "#headline-block",
+        { x: 0, y: 0 },
+        {
+          keyframes: [
+            { x: -9, y: 3, duration: 0.05 },
+            { x: 8, y: -3, duration: 0.05 },
+            { x: -6, y: 2, duration: 0.05 },
+            { x: 4, y: -1, duration: 0.05 },
+            { x: -2, y: 0, duration: 0.04 },
+            { x: 0, y: 0, duration: 0.04 },
+          ],
+          ease: "none",
+          immediateRender: false,
+        },
+        landed
+      );
+
+      // Final second: orange underline draws left to right under the last line.
+      tl.fromTo(
+        "#headline-underline",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.55, ease: "power3.out" },
+        4.0
+      );
+
+      // Hold to the end.
+      tl.set({}, {}, 5);
+
+      window.__timelines["headline"] = tl;
+    })();
+  </script>
+</template>

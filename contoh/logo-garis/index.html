@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #f6efe4; /* off-white paper */
+        --ink: #6b3f24; /* warm brown pen */
+        --fill: #c4501b; /* deep orange */
+        --cream: #f7e8cc; /* cream strokes after fill */
+        --font-display: Georgia, "Times New Roman", Times, serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        background: var(--ground);
+        font-family: var(--font-display);
+      }
+      #logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+      }
+      #logo svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+      }
+      .stroke {
+        fill: none;
+        stroke: var(--ink);
+        stroke-width: 14;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+      }
+      #ring {
+        fill: var(--fill);
+        fill-opacity: 0;
+        stroke-width: 16;
+      }
+      #name {
+        position: absolute;
+        left: 0;
+        top: 1210px;
+        width: 1080px;
+        text-align: center;
+        color: var(--ink);
+        font-size: 140px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        white-space: pre;
+      }
+      #name span {
+        display: inline-block;
+        opacity: 0;
+      }
+      #tagline {
+        position: absolute;
+        left: 0;
+        top: 1400px;
+        width: 1080px;
+        text-align: center;
+        color: var(--ink);
+        font-size: 44px;
+        font-style: italic;
+        letter-spacing: 0.28em;
+        line-height: 1.2;
+      }
+      #tagline span {
+        display: inline-block;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="5"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="logo" class="clip" data-start="0" data-duration="5" data-track-index="0" data-track-kind="graphics">
+        <svg viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-label="Kopi Senja logo">
+          <circle id="ring" class="stroke" cx="540" cy="820" r="320" pathLength="1" />
+          <path
+            id="cup"
+            class="stroke"
+            pathLength="1"
+            d="M 395 800 H 665 L 642 965 Q 637 1000 602 1000 H 458 Q 423 1000 418 965 Z"
+          />
+          <path id="handle" class="stroke" pathLength="1" d="M 659 840 C 745 832 748 940 650 945" />
+          <path id="saucer" class="stroke" pathLength="1" d="M 365 1045 H 695" />
+          <path
+            id="steam1"
+            class="stroke"
+            pathLength="1"
+            d="M 495 760 C 462 718 528 690 495 640 C 474 608 492 585 505 572"
+          />
+          <path
+            id="steam2"
+            class="stroke"
+            pathLength="1"
+            d="M 580 760 C 547 718 613 690 580 640 C 559 608 577 585 590 572"
+          />
+        </svg>
+      </div>
+
+      <div id="name" class="clip" data-start="0" data-duration="5" data-track-index="1" data-track-kind="graphics"><span>K</span><span>o</span><span>p</span><span>i</span><span> </span><span>S</span><span>e</span><span>n</span><span>j</span><span>a</span></div>
+
+      <div id="tagline" class="clip" data-start="0" data-duration="5" data-track-index="2" data-track-kind="graphics">
+        <span>Since 2019</span>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // 0.0 – 1.5 s: pen draws every stroke in warm brown
+      tl.to("#ring", { strokeDashoffset: 0, duration: 0.9, ease: "power1.inOut" }, 0);
+      tl.to("#cup", { strokeDashoffset: 0, duration: 0.7, ease: "power1.inOut" }, 0.35);
+      tl.to("#handle", { strokeDashoffset: 0, duration: 0.35, ease: "power1.inOut" }, 0.8);
+      tl.to("#saucer", { strokeDashoffset: 0, duration: 0.3, ease: "power1.inOut" }, 0.95);
+      tl.to("#steam1", { strokeDashoffset: 0, duration: 0.4, ease: "sine.inOut" }, 1.05);
+      tl.to("#steam2", { strokeDashoffset: 0, duration: 0.4, ease: "sine.inOut" }, 1.1);
+
+      // 1.5 – 1.9 s: circle fills deep orange, strokes turn cream
+      tl.to("#ring", { fillOpacity: 1, duration: 0.4, ease: "power2.out" }, 1.5);
+      tl.to(".stroke", { stroke: "#f7e8cc", duration: 0.4, ease: "power2.out" }, 1.5);
+
+      // 1.95 s on: name fades up letter by letter
+      tl.fromTo(
+        "#name span",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.07 },
+        1.95
+      );
+
+      // then the smaller line
+      tl.fromTo(
+        "#tagline span",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+        3.2
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

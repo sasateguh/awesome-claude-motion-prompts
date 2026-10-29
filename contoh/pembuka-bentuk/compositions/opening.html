@@ -1,0 +1,159 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      --navy: #0d1830;
+      --coral: #ff735f;
+      --coral-card: #e35a46;
+      --mint: #7fdcc0;
+      --sand: #e8d2a6;
+      --ink: #ffffff;
+      --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--navy);
+      font-family: var(--font-system);
+    }
+    .op-shape {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 60px;
+      height: 60px;
+      margin: -30px 0 0 -30px;
+      opacity: 0;
+    }
+    .op-circle {
+      border-radius: 50%;
+    }
+    .op-square {
+      border-radius: 8px;
+    }
+    .op-triangle {
+      clip-path: polygon(50% 4%, 97% 92%, 3% 92%);
+    }
+    .op-coral {
+      background: var(--coral);
+    }
+    .op-mint {
+      background: var(--mint);
+    }
+    .op-sand {
+      background: var(--sand);
+    }
+    #op-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 840px;
+      height: 600px;
+      margin: -300px 0 0 -420px;
+      border-radius: 56px;
+      background: var(--coral-card);
+      padding: 0 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      opacity: 0;
+    }
+    .op-mask {
+      overflow: hidden;
+      padding-bottom: 0.08em;
+    }
+    #op-episode {
+      color: var(--ink);
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    #op-title {
+      color: var(--ink);
+      font-size: 104px;
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+  </style>
+  <div id="root" data-composition-id="opening" data-width="1080" data-height="1920">
+    <div id="op-shapes" data-layout-allow-overlap>
+      <div id="op-s01" class="op-shape op-circle op-coral"></div>
+      <div id="op-s02" class="op-shape op-square op-sand"></div>
+      <div id="op-s03" class="op-shape op-triangle op-mint"></div>
+      <div id="op-s04" class="op-shape op-circle op-mint"></div>
+      <div id="op-s05" class="op-shape op-square op-coral"></div>
+      <div id="op-s06" class="op-shape op-triangle op-sand"></div>
+      <div id="op-s07" class="op-shape op-circle op-sand"></div>
+      <div id="op-s08" class="op-shape op-square op-mint"></div>
+      <div id="op-s09" class="op-shape op-triangle op-coral"></div>
+      <div id="op-s10" class="op-shape op-circle op-coral"></div>
+      <div id="op-s11" class="op-shape op-square op-sand"></div>
+      <div id="op-s12" class="op-shape op-triangle op-mint"></div>
+      <div id="op-s13" class="op-shape op-circle op-mint"></div>
+      <div id="op-s14" class="op-shape op-square op-coral"></div>
+      <div id="op-s15" class="op-shape op-triangle op-sand"></div>
+      <div id="op-s16" class="op-shape op-circle op-sand"></div>
+      <div id="op-s17" class="op-shape op-square op-mint"></div>
+      <div id="op-s18" class="op-shape op-triangle op-coral"></div>
+      <div id="op-s19" class="op-shape op-circle op-coral"></div>
+      <div id="op-s20" class="op-shape op-square op-sand"></div>
+    </div>
+    <div id="op-card">
+      <div class="op-mask"><p id="op-episode" data-var-text="episode">Episode 12</p></div>
+      <div class="op-mask"><h1 id="op-title" data-var-text="title">Pricing your first product</h1></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // Fixed, hand-picked spread so every render is identical (no Math.random).
+      const jitter = [6, -7, 3, -4, 8, -2, 5, -8, 2, -5, 7, -3, 4, -6, 1, -7, 6, -1, 3, -4];
+      const reach = [430, 300, 380, 250, 410, 330, 280, 440, 360, 230, 400, 310, 350, 270, 420, 290, 370, 240, 390, 320];
+      const size = [1, 0.75, 1.15, 0.85, 0.7, 1.1, 0.9, 1.2, 0.8, 1, 0.75, 1.15, 0.9, 1.05, 0.8, 1.2, 0.7, 1, 0.95, 0.85];
+      const spin = [540, -420, 360, -600, 480, -360, 600, -480, 420, -540, 360, -600, 540, -420, 480, -360, 600, -480, 420, -540];
+
+      const shapes = gsap.utils.toArray("#op-shapes .op-shape");
+      shapes.forEach((el, i) => {
+        const a = ((i * 18 + jitter[i]) * Math.PI) / 180;
+        const x = Math.cos(a) * reach[i];
+        const y = Math.sin(a) * reach[i] * 1.7; // taller spread for the vertical frame
+
+        // 0.2 s: burst out from the centre, spinning, slowing with an ease-out.
+        tl.fromTo(
+          el,
+          { x: 0, y: 0, rotation: 0, scale: 0.2, opacity: 0 },
+          { x: x, y: y, rotation: spin[i], scale: size[i], opacity: 1, duration: 1.6, ease: "expo.out" },
+          0.2 + (i % 4) * 0.015,
+        );
+        // 1.8 s: pulled back to the centre, accelerating in.
+        tl.fromTo(
+          el,
+          { x: x, y: y, rotation: spin[i], scale: size[i] },
+          { x: 0, y: 0, rotation: spin[i] + spin[i] * 0.5, scale: 0.35, duration: 0.55, ease: "power3.in", immediateRender: false },
+          1.8 + (i % 5) * 0.012,
+        );
+        tl.fromTo(el, { opacity: 1 }, { opacity: 0, duration: 0.12, ease: "none", immediateRender: false }, 2.3);
+      });
+
+      // 2.28 s: the shapes merge into one coral rounded rectangle.
+      tl.fromTo(
+        "#op-card",
+        { opacity: 0, scale: 0.1, rotation: -8, borderRadius: 300 },
+        { opacity: 1, scale: 1, rotation: 0, borderRadius: 56, duration: 0.6, ease: "back.out(1.5)" },
+        2.28,
+      );
+
+      // Text slides up inside the card.
+      tl.fromTo("#op-episode", { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "power3.out" }, 2.75);
+      tl.fromTo("#op-title", { yPercent: 105 }, { yPercent: 0, duration: 0.6, ease: "power3.out" }, 2.9);
+
+      // Title card holds from 3.5 s to the end (final second and more).
+      tl.to({}, { duration: 0.01 }, 4.99);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["opening"] = tl;
+    })();
+  </script>
+</template>
