@@ -593,10 +593,10 @@ ikon atau fon dari luar.
 
 ## Pemapar kod ke video
 
-- [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) - ★ 75.3k+ · Apache-2.0 · 2026-10 — Write HTML. Render video. Built for agents.
-- [3b1b/manim](https://github.com/3b1b/manim) - ★ 95.8k+ · MIT · 2026-09 — Animation engine for explanatory math videos.
-- [remotion-dev/remotion](https://github.com/remotion-dev/remotion) - ★ 68.8k+ · lesen lain · 2026-10 — 🎥 Make videos programmatically with React.
-- [ManimCommunity/manim](https://github.com/ManimCommunity/manim) - ★ 41.9k+ · MIT · 2026-10 — A community-maintained Python framework for creating mathematical animations.
+- [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) - ★ 75.9k+ · Apache-2.0 · 2026-10 — Write HTML. Render video. Built for agents.
+- [3b1b/manim](https://github.com/3b1b/manim) - ★ 95.9k+ · MIT · 2026-09 — Animation engine for explanatory math videos.
+- [remotion-dev/remotion](https://github.com/remotion-dev/remotion) - ★ 69k+ · lesen lain · 2026-10 — 🎥 Make videos programmatically with React.
+- [ManimCommunity/manim](https://github.com/ManimCommunity/manim) - ★ 42k+ · MIT · 2026-10 — A community-maintained Python framework for creating mathematical animations.
 - [motion-canvas/motion-canvas](https://github.com/motion-canvas/motion-canvas) - ★ 19.5k+ · MIT · 2026-07 — Visualize Your Ideas With Code.
 - [dmtrKovalenko/fframes](https://github.com/dmtrKovalenko/fframes) - ★ 3k+ · MIT · 2026-10 — programmatic video rendering framework that is actually fast.
 - [midrender/revideo](https://github.com/midrender/revideo) - ★ 4.1k+ · MIT · 2026-07 — Create Videos with Code.
@@ -611,12 +611,12 @@ ikon atau fon dari luar.
 
 ## Skil dan templat Claude
 
-- [latent-spaces/brag](https://github.com/latent-spaces/brag) - ★ 19.4k+ · MIT · 2026-10 — You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.
-- [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) - ★ 14.6k+ · Apache-2.0 · 2026-10 — AI video skill for Claude Code & Codex — cinematic, editable product promos with Remotion: 124 shot recipe cards, 150 motion previews, beat sync, sound design, Motion Workbench & JianYing (CapCut CN) export.
+- [latent-spaces/brag](https://github.com/latent-spaces/brag) - ★ 19.6k+ · MIT · 2026-10 — You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.
+- [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) - ★ 15.1k+ · Apache-2.0 · 2026-10 — AI video skill for Claude Code & Codex — cinematic, editable product promos with Remotion: 124 shot recipe cards, 150 motion previews, beat sync, sound design, Motion Workbench & JianYing (CapCut CN) export.
 - [digitalsamba/claude-code-video-toolkit](https://github.com/digitalsamba/claude-code-video-toolkit) - ★ 2.3k+ · MIT · 2026-10 — AI-native video production toolkit for Claude Code.
 - [LottieFiles/motion-design-skill](https://github.com/LottieFiles/motion-design-skill) - ★ 2.6k+ · MIT · 2026-05 — Universal motion design principles for AI agents — timing, easing, choreography, and Disney animation principles adapted for UI.
-- [haidrrrry/claude-remotion-skill](https://github.com/haidrrrry/claude-remotion-skill) - ★ 700+ · MIT · 2026-08 — Open-source Claude agent skill that teaches Claude Code, Claude Desktop & Claude AI to create and edit professional motion graphics videos with Remotion. AI video editing, B-roll, captions, sound design — from one prompt.
-- [Sunwood-ai-labs/hyperframes-motion-reel-skill](https://github.com/Sunwood-ai-labs/hyperframes-motion-reel-skill) - ★ 150+ · MIT · 2026-09 — 🎬 Claude Code skill for showreel-grade, beat-synced motion graphics with HyperFrames (HTML + GSAP + SVG + Canvas, Apache-2.0) — 120 BPM / 60 FPS to MP4.
+- [haidrrrry/claude-remotion-skill](https://github.com/haidrrrry/claude-remotion-skill) - ★ 730 · MIT · 2026-08 — Open-source Claude agent skill that teaches Claude Code, Claude Desktop & Claude AI to create and edit professional motion graphics videos with Remotion. AI video editing, B-roll, captions, sound design — from one prompt.
+- [Sunwood-ai-labs/hyperframes-motion-reel-skill](https://github.com/Sunwood-ai-labs/hyperframes-motion-reel-skill) - ★ 160 · MIT · 2026-09 — 🎬 Claude Code skill for showreel-grade, beat-synced motion graphics with HyperFrames (HTML + GSAP + SVG + Canvas, Apache-2.0) — 120 BPM / 60 FPS to MP4.
 - [jhartquist/claude-remotion-kickstart](https://github.com/jhartquist/claude-remotion-kickstart) - ★ 120+ · MIT · 2025-12 — Create videos programmatically with Claude Code and Remotion.
 
 ## Tanpa setup
