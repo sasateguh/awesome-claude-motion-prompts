@@ -24,9 +24,9 @@ kecuali = [
   "Agentchengfeng/chengfeng-videocut-skills",
   "AgriciDaniel/claude-shorts",
   "AgriciDaniel/claude-youtube",
+  "airbnb/lottie-web",
   "AKCodez/higgsfield-claude-skills",
   "alchaincyf/huashu-motion",
-  "airbnb/lottie-web",
   "alecs5am/ralphy",
   "alexgreensh/anidoodle",
   "alexmacarthur/typeit",
@@ -41,6 +41,7 @@ kecuali = [
   "apenasdouglas/ai-motion-library",
   "appariciojunior/video-editor-skills",
   "AprilNEA/AChat",
+  "arla6ka/design.how",
   "artokun/comfyui-mcp",
   "ashishgogula/coverflow",
   "astrofox-io/astrofox",
@@ -79,6 +80,7 @@ kecuali = [
   "daybrush/scenejs",
   "dddabtc/winremote-mcp",
   "decolua/9remote",
+  "delexw/motion-graphics-agent",
   "devswha/ovis",
   "drawcall/Proton",
   "echris6/motion-video-kit",
@@ -157,6 +159,8 @@ kecuali = [
   "Mort1d/motion-graphics-skills",
   "Mr-funny/hbg-life-simulation",
   "mrachinskiy/commotion",
+  "mromidev/claude-animated-shorts",
+  "mrpaidsocial/mrpaidsocial-video-editor-agent",
   "mrsarac/ff-tracking",
   "mutonby/vibetube",
   "NanmiCoder/cc-haha",
@@ -389,6 +393,10 @@ kategori = "skil"
 
 [[entri]]
 repo = "Sunwood-ai-labs/hyperframes-motion-reel-skill"
+kategori = "skil"
+
+[[entri]]
+repo = "artemnovitckii/claude-animation-skills"
 kategori = "skil"
 
 # ── Prompt (K10: lima kategori; kategori kosong tidak dipapar) ─────────────────────────────────────────────────────────
