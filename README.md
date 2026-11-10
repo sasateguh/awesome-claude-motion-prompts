@@ -577,8 +577,8 @@ icons or fonts from outside.
 
 ## Code to video renderers
 
-- [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) - ★ 81.3k+ · Apache-2.0 · 2026-11 — Write HTML. Render video. Built for agents.
-- [remotion-dev/remotion](https://github.com/remotion-dev/remotion) - ★ 71.8k+ · other license · 2026-11 — 🎥 Make videos programmatically with React.
+- [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) - ★ 81.7k+ · Apache-2.0 · 2026-11 — Write HTML. Render video. Built for agents.
+- [remotion-dev/remotion](https://github.com/remotion-dev/remotion) - ★ 72k+ · other license · 2026-11 — 🎥 Make videos programmatically with React.
 - [3b1b/manim](https://github.com/3b1b/manim) - ★ 96.2k+ · MIT · 2026-09 — Animation engine for explanatory math videos.
 - [ManimCommunity/manim](https://github.com/ManimCommunity/manim) - ★ 42.3k+ · MIT · 2026-11 — A community-maintained Python framework for creating mathematical animations.
 - [motion-canvas/motion-canvas](https://github.com/motion-canvas/motion-canvas) - ★ 19.7k+ · MIT · 2026-07 — Visualize Your Ideas With Code.
@@ -586,6 +586,7 @@ icons or fonts from outside.
 - [midrender/revideo](https://github.com/midrender/revideo) - ★ 4.1k+ · MIT · 2026-07 — Create Videos with Code.
 - [nexu-io/html-video](https://github.com/nexu-io/html-video) - ★ 4.8k+ · Apache-2.0 · 2026-06 — Programmatic video for coding agents — HTML to video on your laptop. Turn HTML, CSS & data into real MP4s with pluggable render engines, 21 templates, AI soundtrack. Apache-2.0, no per-render fees. An official project by the Open Design team.
 - [BintzGavin/helios](https://github.com/BintzGavin/helios) - ★ 120+ · Apache-2.0 · 2026-11 — Programmatic video creation with web technologies you already know. CSS animations just work.
+- [zz41354899/mografy](https://github.com/zz41354899/mografy) - ★ 50+ · MIT · 2026-11 — Create, preview, and export Canvas motion graphics with Claude Code or Codex. Local-first and open source, with MP4, Lottie, and SVGA export.
 
 ## Web animation libraries
 
@@ -595,13 +596,14 @@ icons or fonts from outside.
 
 ## Claude skills and starters
 
-- [latent-spaces/brag](https://github.com/latent-spaces/brag) - ★ 20.7k+ · MIT · 2026-10 — You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.
-- [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) - ★ 18k+ · Apache-2.0 · 2026-10 — AI video skill for Claude Code & Codex — cinematic, editable product promos with Remotion: 124 shot recipe cards, 150 motion previews, beat sync, sound design, Motion Workbench & JianYing (CapCut CN) export.
+- [latent-spaces/brag](https://github.com/latent-spaces/brag) - ★ 20.8k+ · MIT · 2026-10 — You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.
+- [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) - ★ 18.2k+ · Apache-2.0 · 2026-11 — AI video skill for Claude Code & Codex — cinematic, editable product promos with Remotion: 124 shot recipe cards, 150 motion previews, beat sync, sound design, Motion Workbench & JianYing (CapCut CN) export.
 - [digitalsamba/claude-code-video-toolkit](https://github.com/digitalsamba/claude-code-video-toolkit) - ★ 2.4k+ · MIT · 2026-11 — Make videos with Claude Code: script, AI voiceover, music, video clips and render, on open-source models that cost cents.
-- [LottieFiles/motion-design-skill](https://github.com/LottieFiles/motion-design-skill) - ★ 2.8k+ · MIT · 2026-05 — Universal motion design principles for AI agents — timing, easing, choreography, and Disney animation principles adapted for UI.
-- [haidrrrry/claude-remotion-skill](https://github.com/haidrrrry/claude-remotion-skill) - ★ 890+ · MIT · 2026-08 — Open-source Claude agent skill that teaches Claude Code, Claude Desktop & Claude AI to create and edit professional motion graphics videos with Remotion. AI video editing, B-roll, captions, sound design — from one prompt.
-- [artemnovitckii/claude-animation-skills](https://github.com/artemnovitckii/claude-animation-skills) - ★ 530+ · other license · 2026-11 — Six Claude Code skills that make animations for reels, no footage needed: 3D cartoon explainer, stick figure, minimal line art, 3D map route, exploded view, line graph.
-- [Sunwood-ai-labs/hyperframes-motion-reel-skill](https://github.com/Sunwood-ai-labs/hyperframes-motion-reel-skill) - ★ 180 · MIT · 2026-09 — 🎬 Claude Code skill for showreel-grade, beat-synced motion graphics with HyperFrames (HTML + GSAP + SVG + Canvas, Apache-2.0) — 120 BPM / 60 FPS to MP4.
+- [LottieFiles/motion-design-skill](https://github.com/LottieFiles/motion-design-skill) - ★ 2.9k+ · MIT · 2026-05 — Universal motion design principles for AI agents — timing, easing, choreography, and Disney animation principles adapted for UI.
+- [artemnovitckii/claude-animation-skills](https://github.com/artemnovitckii/claude-animation-skills) - ★ 560 · other license · 2026-11 — Six Claude Code skills that make animations for reels, no footage needed: 3D cartoon explainer, stick figure, minimal line art, 3D map route, exploded view, line graph.
+- [haidrrrry/claude-remotion-skill](https://github.com/haidrrrry/claude-remotion-skill) - ★ 900+ · MIT · 2026-08 — Open-source Claude agent skill that teaches Claude Code, Claude Desktop & Claude AI to create and edit professional motion graphics videos with Remotion. AI video editing, B-roll, captions, sound design — from one prompt.
+- [win4r/video-director](https://github.com/win4r/video-director) - ★ 420+ · MIT · 2026-11 — A Claude skill for directing, building and verifying code-rendered videos (HTML/Canvas → MP4): principles, gated workflow, QA scripts and evals.
+- [Sunwood-ai-labs/hyperframes-motion-reel-skill](https://github.com/Sunwood-ai-labs/hyperframes-motion-reel-skill) - ★ 180+ · MIT · 2026-09 — 🎬 Claude Code skill for showreel-grade, beat-synced motion graphics with HyperFrames (HTML + GSAP + SVG + Canvas, Apache-2.0) — 120 BPM / 60 FPS to MP4.
 - [jhartquist/claude-remotion-kickstart](https://github.com/jhartquist/claude-remotion-kickstart) - ★ 120+ · MIT · 2025-12 — Create videos programmatically with Claude Code and Remotion.
 
 ## No setup

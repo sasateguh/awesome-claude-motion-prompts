@@ -17,6 +17,7 @@ buang_fork = true
 kecuali = [
   "0xS4N4TG/kinetograph",
   "2d-inc/Flare-Swift",
+  "aaitor/skill-video-studio",
   "AbubakrChan/product-launch-motion",
   "actionow-ai/vvv",
   "AFASSoftware/maquette",
@@ -25,7 +26,10 @@ kecuali = [
   "AgriciDaniel/claude-shorts",
   "AgriciDaniel/claude-youtube",
   "airbnb/lottie-web",
+  "AkaraChen/cc-remote",
   "AKCodez/higgsfield-claude-skills",
+  "Akillll-DuoHe/fy-code-animation",
+  "alchaincyf/huashu-art-motion",
   "alchaincyf/huashu-motion",
   "alecs5am/ralphy",
   "alexgreensh/anidoodle",
@@ -63,6 +67,7 @@ kecuali = [
   "calesthio/OpenMontage",
   "cclank/lanshu-awesome-ai-video-kit",
   "charlie947/motion-graphics-skills",
+  "ChatCut-Inc/agent-plugin",
   "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
   "cindyxu1030/motion-graphics-prompt-bank",
   "Clipcat-ai/clipcat-skill",
@@ -83,6 +88,7 @@ kecuali = [
   "delexw/motion-graphics-agent",
   "devswha/ovis",
   "drawcall/Proton",
+  "Ebony-Vinyl/EAC-design-world",
   "echris6/motion-video-kit",
   "EGSECDA/vocaloid-style-mv-pipeline",
   "Endless1936/book-video",
@@ -106,6 +112,7 @@ kecuali = [
   "hassancs91/claude-faceless-shorts-creator",
   "hassancs91/claude-youtube-editor",
   "HeyChengC/vibe-knowledge-film",
+  "HeyChengC/wallstreet-explainer",
   "heygen-com/hyperframes-community-skills",
   "heygen-com/hyperframes-launches",
   "howseen-ai/claude-motion-design",
@@ -115,6 +122,7 @@ kecuali = [
   "iart-ai/motion-skills",
   "idosal/git-mcp",
   "Illyism/seo-skills",
+  "imMamdouhaboammar/motion-graphics-skills",
   "irinabuht12-oss/google-ads-meta-ads-mcp",
   "ItsssssJack/claude-video-2",
   "jacklam718/react-native-modals",
@@ -157,6 +165,7 @@ kecuali = [
   "mixpeek/amux",
   "moritzkremb/framejam",
   "Mort1d/motion-graphics-skills",
+  "motionvideohq/motionvideo.xyz",
   "Mr-funny/hbg-life-simulation",
   "mrachinskiy/commotion",
   "mromidev/claude-animated-shorts",
@@ -173,12 +182,15 @@ kecuali = [
   "nodetool-ai/nodetool",
   "Nodlik/react-pageflip",
   "nolangz/pixel2motion",
+  "notivn/AIEV",
+  "notivn/AIEVv2",
   "nutllwhy/code-brand-film",
   "nutllwhy/whiteboard-book-video-skill",
   "oil-oil/oil-motion",
   "op7418/guizang-product-video-skill",
   "op7418/Video-Wrapper-Skills",
   "openfilm/openfilm",
+  "OpenMontageInc/OpenMontage",
   "opusvideo/awesome-claude-video",
   "Orkas-AI/Orkas-VideoStudio",
   "OSideMedia/higgsfield-ai-prompt-skill",
@@ -197,11 +209,13 @@ kecuali = [
   "robonuggets/seedance-skill",
   "rohitg00/awesome-claude-design",
   "sarcadass/granim.js",
+  "Seagey/couch-tv",
   "SeonmiP/KineTy",
   "Sfedfcv/redesigned-pancake",
   "sgwilym/windups",
   "shadcn-labs/snapcn",
   "Shaitrish/37studio",
+  "shinyobjectz/raea",
   "shzlw/zeu",
   "skevy/wobble",
   "software-mansion/react-native-reanimated",
@@ -211,6 +225,7 @@ kecuali = [
   "storytold/effectcraft",
   "svgdotjs/svg.js",
   "swup/swup",
+  "talsiach/take-one",
   "Tejashmakwana/motionmaxxing",
   "termly-dev/termly-cli",
   "terragon-labs/terragon-oss",
@@ -228,6 +243,7 @@ kecuali = [
   "Vincentwei1021/video-talkcraft",
   "vizzuhq/vizzu-lib",
   "webkul/micron",
+  "Win-Hao/music-mv",
   "wshuyi/remotion-video-skill",
   "wx4766/html-to-video",
   "xiejunjie524/handdraw-story-video",
@@ -398,6 +414,14 @@ kategori = "skil"
 [[entri]]
 repo = "artemnovitckii/claude-animation-skills"
 kategori = "skil"
+
+[[entri]]
+repo = "win4r/video-director"
+kategori = "skil"
+
+[[entri]]
+repo = "zz41354899/mografy"
+kategori = "pemapar"
 
 # ── Prompt (K10: lima kategori; kategori kosong tidak dipapar) ─────────────────────────────────────────────────────────
 
